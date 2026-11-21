@@ -18,23 +18,23 @@ The brief says: *"Everything not specified in this document or the Figma file is
 | # | Ambiguity | Decision |
 |---|---|---|
 | R1 | The design is 1200px wide with a 1008px content column. The brief tests at 1440. | Content max-width 1008px, centred. The footer and background are full-bleed at any width. |
-| R2 | No tablet or mobile frames. | Breakpoints: **< 768** mobile, **768–1023** tablet, **≥ 1024** desktop. Below 1024 the nav collapses to a hamburger and drawer. Lead form: two columns ≥ 1024, stacked below (left panel first). ROI: sliders side by side ≥ 768; result cards 3-up ≥ 768, stacked on mobile. Footer: link columns 5 → 3 → 2 → stacked. |
-| R3 | The header pill is 1134px wide, wider than the 1008 column. | Keep the overhang at ≥ 1200px viewport. Between 1024 and 1199, clamp to the viewport minus 32px. |
-| R4 | Sticky header? It isn't stated. The translucent blurred pill suggests floating over content. | Sticky, floating 16–24px from the top, with the same blur. Add a subtle shadow once scrolled. |
+| R2 | No tablet or mobile frames. | Breakpoints: **< 768** mobile, **768–1023** tablet, **≥ 1024** desktop. ✅ The header switches to the hamburger and drawer below **1200px**: the designed nav needs the full 1134px pill, and squeezing it into 1024–1199 would break the design's spacing. Lead form: two columns ≥ 1024, stacked below (left panel first). ROI: sliders side by side ≥ 768; result cards 3-up ≥ 768, stacked on mobile. Footer: link columns 5 → 3 → 2 → stacked. |
+| R3 | The header pill is 1134px wide, wider than the 1008 column. | ✅ `width: min(100% − 32px, 1134px)`, centred, so the overhang shows at ≥ 1200px. |
+| R4 | Sticky header? It isn't stated. The translucent blurred pill suggests floating over content. | ✅ Sticky, 24px from the top on desktop (its position in Figma) and 16px on smaller screens. After 8px of scroll the pill gets a more opaque tint (same hue) and a soft shadow, so it stays legible over content. |
 | R5 | No horizontal overflow from 360 to 1920. | The 200px footer watermark is clipped (`overflow: hidden`) and scales with `clamp()`. The marquee is clipped inside its own container. |
 
 ## Header and navigation
 
 | # | Ambiguity | Decision |
 |---|---|---|
-| H1 | Only the Solutions mega menu is designed. | Solutions = mega menu exactly as designed. Product = mega menu reusing the same component, with Capabilities/Tools columns. Industries, Resources and Company = simple dropdowns, using footer link groups. Pricing = plain link. This covers all three required patterns. |
+| H1 | Only the Solutions mega menu is designed. | ✅ Solutions = mega menu as designed. Its other groups (Features, Integration, Document Types) get plausible links, reusing the footer's Solutions list where possible. Product (footer quick links), Industries, Resources and Company = simple dropdowns styled like the mega menu's right column. Pricing = plain link. This covers all three required patterns with 6 items. |
 | H2 | Which item is active? | Solutions, as in the design. The bar indicator sits under the active item. |
-| H3 | Hover vs click to open. | Desktop with a fine pointer: open on hover (120ms intent delay), close 200ms after leaving. Click/Enter/Space toggles and pins the menu open. Touch devices: click only. Close on outside click, Escape (focus returns to the trigger) and scroll (beyond 8px). |
+| H3 | Hover vs click to open. | ✅ Radix Navigation Menu. Hover opens for mouse pointers only, after a 120ms intent delay. It closes 150ms after the pointer leaves (Radix's fixed value). Click/Enter/Space toggles. Touch is click-only. It closes on outside pointer-down, on Escape (focus returns to the trigger) and once the page scrolls more than 8px. Each panel has a 27px hoverable gap above it, so crossing from the trigger doesn't close it. |
 | H4 | Mega menu left column interaction. | Hover or focus on a left item swaps the right column's content (the design shows the Capabilities children). |
 | H5 | No logo (white placeholder pills in the header and footer). | Use the KlearStack monogram + wordmark from the lead form frame. |
-| H6 | Mobile menu pattern. | Slide-in drawer from the right using native `<dialog>` (focus trap, inert background, Escape). Each dropdown becomes an accordion. CTAs pinned at the bottom of the drawer. |
+| H6 | Mobile menu pattern. | ✅ Slide-in drawer from the right using Radix Dialog (focus trap, body scroll lock, Escape, focus returns to the menu button). Radix Accordion with one section open at a time; the active section (Solutions) starts open. CTAs are pinned at the bottom. Touch targets are ≥ 44px. The drawer closes automatically if the viewport grows to desktop. |
 | H7 | Where links go. | The brief says no routing. Header/footer links use `href="#"` and keep normal link semantics and states. **Get Free Demo**, **Try it for Free**, **Get A Free Demo** and **Automate your workflows** scroll smoothly to the lead form and focus the first field. Pricing scrolls to the ROI calculator. |
-| H8 | CTA button animation is unspecified. | Gradient shifts on hover, the arrow nudges 4px right, 1px lift with shadow, 0.98 scale on press. Honour `prefers-reduced-motion`. |
+| H8 | Hover states and CTA animation aren't shown in Figma (only the active state is). | ✅ Nav items: text goes brand blue, and a 1px underline grows from the centre. The active item keeps its yellow and the 76×6 blue bar. Open menus flip the caret. Dropdown links go semibold `#0053B5` with an arrow sliding in (width reserved, so nothing shifts). CTAs: 1px lift, brighter gradient and blue shadow, the arrow nudges 4px, 0.98 scale on press. All motion is disabled under `prefers-reduced-motion`. |
 
 ## Lead form
 
@@ -51,7 +51,7 @@ The brief says: *"Everything not specified in this document or the Figma file is
 | L9 | No consent or privacy note in the design. | Add one small line under the button: *"By submitting, you agree to be contacted about KlearStack. See our Privacy Policy."* Required for PII handling. |
 | L10 | Spam protection. | A hidden honeypot field, plus a minimum fill time (3s, from a timestamp signed by the server), plus per-IP rate limiting (5 per 10 minutes). Rate limiting uses Upstash if configured, otherwise an in-memory fallback, documented as best-effort on serverless. |
 | L11 | Success and failure states. | On success the form panel is replaced by a confirmation, then the calendar step. On failure there's an inline error banner with Retry, the user's input is kept, and a `mailto:` fallback is offered. |
-| L12 | Logo marquee content. | Use the 5 logos from the design (Landmark, Network International, Elevation 10K, Konica Minolta; the design repeats some). Duplicate the track for a seamless loop. Pause on hover/focus. Freeze for reduced-motion. |
+| L12 | Logo marquee content. | ✅ The design's own 7-logo sequence (Landmark, Network International, Elevation 10K ×2 each, Konica Minolta), so one copy (968px) is wider than the strip at every breakpoint. Pure CSS, rendered twice, the track slides −50%. Pauses on hover. Under reduced motion: no animation, the duplicate is hidden, and the strip scrolls horizontally instead. Below 640px the label sits above the logos. |
 | L13 | Ratings badges (G2 4.9, Trustpilot 4.7). | Static content, not linked. |
 
 ## Integrations
@@ -97,7 +97,7 @@ The brief says: *"Everything not specified in this document or the Figma file is
 
 | # | Ambiguity | Decision |
 |---|---|---|
-| Q1 | The ratings text uses Roboto in Figma. | Substitute Inter to avoid loading a third font family. |
+| Q1 | Fonts not available as designed. | Ratings text: Roboto → Inter, to avoid a third font family. ✅ Display font: Figma uses the retired **Be Vietnam**, and Google Fonts only serves **Be Vietnam Pro**, which is slightly wider. Where that changes line breaks (lead headline), the text box borrows a little padding to keep the designed breaks. |
 | Q2 | Animation library. | None. CSS transitions/keyframes only, for bundle size and Lighthouse. |
 | Q3 | Database. | None. The Sheet acts as the durable record of every lead. |
 | Q4 | Favicon. | ✅ The KlearStack monogram as SVG (`app/icon.svg`). |
