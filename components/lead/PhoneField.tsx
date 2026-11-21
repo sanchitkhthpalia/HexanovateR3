@@ -4,7 +4,8 @@ import * as Select from "@radix-ui/react-select";
 import { getCountries, getCountryCallingCode, type CountryCode } from "libphonenumber-js";
 import Image from "next/image";
 import { forwardRef, type InputHTMLAttributes } from "react";
-import { fieldBorder, fieldBox, SelectContent, SelectItem } from "./fields";
+import { SelectContent, SelectItem } from "@/components/ui/select";
+import { fieldBorder, fieldBox } from "./fields";
 
 // "Contact no.*" with a country-code picker inside the field's left edge (the design has a plain
 // field; the brief requires country-code handling — assumptions L4). Default +91.

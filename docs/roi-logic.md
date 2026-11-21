@@ -134,4 +134,6 @@ Sample side-by-side for the process doc (sheet value = formulas engine on the wo
 | Bank Cheques · Single · 3,000 · ₹5,000 | " | −₹1,583.33 / −₹19,000.00 / 1 | −₹1,583.33 / −₹19,000.00 / 1 |
 | Contract · Multi · any | status | Tier 3 supports Single only | Tier 3 supports Single only |
 
+**Display rounding.** Money is shown the way the sheet's `₹#,##0.00` format displays it: the value is taken to 15 significant digits, then rounded half away from zero (`lib/roi/format.ts`, tested against every fixture). Only 2 of the 1,208 cases fall exactly on a half-paisa: Invoice · Multi · **120,001** pages shows monthly cost ₹2,740.01 and net monthly savings ₹1,17,261.00. That volume isn't one of the sheet's allowed steps, so the UI can't produce it. Check it in the live sheet anyway.
+
 Still to do: repeat three of these in the **live Google Sheet** and add screenshots to the process doc.

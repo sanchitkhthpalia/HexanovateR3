@@ -75,17 +75,19 @@ The brief says: *"Everything not specified in this document or the Figma file is
 | # | Ambiguity | Decision |
 |---|---|---|
 | C1 | The calculator is a raster image in Figma. | Rebuild by measuring the image, reusing the page's tokens. Disclose as a fidelity risk. |
-| C2 | Model toggle labels. | "Single-Shot Model" = sheet `Single`; "Multi-Shot Model" = `Multi`. Default: Single. |
-| C3 | Default state on first load. | As designed: "Select Document Type" with nothing chosen, volume 36,000 and salary at the sheet default. Outputs show ₹0 / 0, because the sheet's outputs are blank until all inputs are complete. |
-| C4 | Salary default: the design shows ₹73,000, the sheet ₹30,000. | ₹30,000, because the sheet defines the logic. |
-| C5 | Volume control. | A slider that snaps to the sheet's 13 allowed steps (non-linear, evenly spaced positions). The bubble shows "36,000 pages". |
-| C6 | Salary control. | A slider from ₹5,000 to ₹2,00,000 in ₹1,000 steps. Arrow keys step ₹1,000; Page Up/Down step ₹10,000. |
-| C7 | Tier 3 + Multi. | Multi stays selectable. Show the sheet's message ("Tier 3 supports Single only") in place of the results, with ₹0/0 shown, as the sheet blanks them. |
-| C8 | Number format. | ₹ with **Indian grouping** (₹4,07,000). Whole numbers show no decimals (as in the design); values with paise show 2 decimals (₹33,916.67), matching the sheet's `₹#,##0.00`. No L/Cr abbreviation, since the design shows none and full figures are easier to check against the sheet. |
-| C9 | Negative savings. | Show the negative value (−₹1,583.33) in a muted warning colour, with a hint that savings start at higher volumes. Don't clamp to zero. |
-| C10 | The design shows 3 outputs; the sheet computes 8. | Show the 3 designed cards. Add a collapsed "View calculation details" disclosure listing all 8 sheet outputs, for reviewer verification. |
+| C2 | Model toggle labels. | ✅ "Single-Shot Model" = sheet `Single`, "Multi-Shot Model" = `Multi`. Default: Single. Built as a radio group (one tab stop, arrow keys). |
+| C13 | Calculator colours/sizes (raster in Figma). | ✅ Sampled from the render: Tailwind's slate scale (`#0F172A` / `#64748B` / `#94A3B8` / `#E2E8F0` / `#F1F5F9` / `#F8FAFC`) plus `#3E93FC`. Geometry is measured: inner card 948 wide, cards 305×114, 15px gaps, 18px thumb. Fonts approximated with the page's fonts. |
+| C14 | Live results for screen readers. | ✅ The visible numbers update instantly. A polite live region announces a one-sentence summary 0.7s after the last change, so dragging a slider doesn't flood announcements. |
+| C3 | Default state on first load. | ✅ **The sheet's own defaults** (Bank Cheques, Single, 36,000 pages, ₹30,000), as instructed, so first load shows real results (₹33,916.67 / ₹4,07,000 / 2) that match the sheet. The design's empty "Select Document Type" / ₹0 state is the sheet's "Complete all inputs" state; it's still handled (₹0 / 0 plus a message) but can't occur in the UI, since every input always has a value. |
+| C4 | Salary default: the design shows ₹73,000, the sheet ₹30,000. | ✅ ₹30,000, because the sheet defines the logic. |
+| C5 | Volume control. | ✅ A native range input over the sheet's 13 allowed steps (evenly spaced positions), with the design's value bubble ("36,000 pages", Indian grouping, so 1,000,000 shows as "10,00,000 pages"). |
+| C6 | Salary control. | ✅ A native range input from ₹5,000 to ₹2,00,000 in ₹1,000 steps. Arrow keys, Page Up/Down, Home and End all work natively. The sheet accepts any decimal salary, but the slider offers whole thousands; the engine handles any value. |
+| C7 | Tier 3 + Multi. | ✅ Multi stays selectable. The results show ₹0 / 0 (the sheet blanks them), with a status message that includes the sheet's wording: "Multi-Shot isn't available for Contract (Tier 3 supports Single only)…". |
+| C8 | Number format. | ✅ `lib/roi/format.ts` (tested). ₹ with **Indian grouping** (₹4,07,000). Whole rupees show no decimals (as in the design's "₹0"); amounts with paise show exactly 2 (₹33,916.67). Rounding matches how the sheet displays `₹#,##0.00` (15 significant digits, half away from zero), verified against all 1,208 fixtures. **No L/Cr abbreviations and no percentages:** neither appears in the design or in the sheet's output formats, and full figures can be compared with the sheet digit for digit. |
+| C9 | Negative savings. | ✅ Shown as-is ("-₹1,583.33") in the danger colour, with a one-line explanation. Not clamped, since the sheet doesn't clamp. |
+| C10 | The design shows 3 outputs; the sheet computes 8. | ✅ The 3 designed cards, plus a collapsed "View calculation details" (`<details>`) listing all 8 sheet outputs, so any combination can be checked against the sheet. It adds ~30px to the card's height. |
 | C11 | The "15% lesser price in the Annual Plan" footnote. | Keep it as display copy. The discount is not applied, as the sheet notes. |
-| C12 | The ⓘ next to Document Volume. | Tooltip: "Total pages processed per year." |
+| C12 | The ⓘ next to Document Volume. | ✅ A focusable button with a tooltip on hover and keyboard focus: "Total pages your team processes per year." |
 
 ## Footer
 

@@ -33,6 +33,16 @@
   --color-ink-muted: #626262;
   --color-ink-menu: #48586a;
   --color-g2: #fe492c;
+  /* ROI calculator — the Figma calculator is a raster, so these are sampled from it (Tailwind's slate scale + one blue) */
+  --color-roi-blue: #3e93fc;
+  --color-roi-ink: #0f172a;
+  --color-roi-muted: #64748b;
+  --color-roi-subtle: #94a3b8;
+  --color-roi-line: #e2e8f0;
+  --color-roi-card-line: #e5eaf1;
+  --color-roi-surface: #f1f5f9;
+  --color-roi-bg: #f8fafc;
+  --color-roi-border: #e4eaf2;
   --color-danger: #c42b1c; /* form errors — not in the design; 5.6:1 on white */
   --color-success: #1e7d4f;
 
@@ -201,6 +211,66 @@
     height: 0;
     overflow: hidden;
     user-select: none;
+  }
+}
+
+/* ROI sliders (measured from the raster): 5px slate track, blue fill up to --fill, 18px white thumb
+   with a 3px blue ring. Native <input type="range"> keeps keyboard and screen-reader support. */
+@utility roi-range {
+  appearance: none;
+  width: 100%;
+  height: 18px;
+  background: transparent;
+  cursor: pointer;
+  &::-webkit-slider-runnable-track {
+    height: 5px;
+    border-radius: 9999px;
+    background: linear-gradient(
+      to right,
+      var(--color-roi-blue) var(--fill, 0%),
+      var(--color-roi-line) var(--fill, 0%)
+    );
+  }
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    margin-top: -6.5px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 3px solid var(--color-roi-blue);
+    box-shadow: 0 1px 3px rgb(15 23 42 / 0.15);
+    transition: box-shadow 150ms, scale 150ms;
+  }
+  &::-moz-range-track {
+    height: 5px;
+    border-radius: 9999px;
+    background: var(--color-roi-line);
+  }
+  &::-moz-range-progress {
+    height: 5px;
+    border-radius: 9999px;
+    background: var(--color-roi-blue);
+  }
+  &::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 9999px;
+    background: #fff;
+    border: 3px solid var(--color-roi-blue);
+    box-shadow: 0 1px 3px rgb(15 23 42 / 0.15);
+  }
+  &:hover::-webkit-slider-thumb {
+    scale: 1.1;
+  }
+  &:focus-visible {
+    outline: none;
+  }
+  &:focus-visible::-webkit-slider-thumb {
+    box-shadow: 0 0 0 4px rgb(62 147 252 / 0.3);
+  }
+  &:focus-visible::-moz-range-thumb {
+    box-shadow: 0 0 0 4px rgb(62 147 252 / 0.3);
   }
 }
 
