@@ -64,7 +64,7 @@ The brief says: *"Everything not specified in this document or the Figma file is
 | # | Ambiguity | Decision |
 |---|---|---|
 | I1 | Build vs integrate. | Our own Next.js API routes. Four systems is manageable, it keeps secrets in one place, and partial failure can be controlled per system. An automation platform would add a fifth service and hide failures. |
-| I2 | CRM. | HubSpot free tier, via a private-app token scoped to contacts read/write. Upsert by email (no duplicates on resubmit). Name splits into firstname/lastname; phone and email map directly; solution, documents and pain point go to custom properties; `lifecyclestage=lead`. |
+| I2 | CRM. | HubSpot free tier, via a service key (HubSpot's replacement for private-app tokens) scoped to contacts read/write. Upsert by email (no duplicates on resubmit). Name splits into firstname/lastname; phone and email map directly; solution, documents and pain point go to custom properties; `lifecyclestage=lead`. |
 | I3 | Sheet. | Apps Script web app with a shared secret, appending: timestamp (IST), name, email, phone, solution, documents, pain point, CRM status, email status, source, user agent. |
 | I4 | Email (no domain, so Resend can't send to ai-labs@). | Nodemailer over Gmail SMTP, using an app password from a test account. Plain-text and HTML versions; all user values HTML-escaped. |
 | I5 | Calendar. | Google Calendar API with an OAuth refresh token from a test account. 30-minute slots, Mon–Fri, 10:00–18:00 IST, over the next 10 business days, minus free/busy. Times shown in the visitor's time zone. Booking re-checks free/busy, creates the event with the visitor as attendee, and sends invites. |

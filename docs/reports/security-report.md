@@ -63,7 +63,7 @@
 ### 5. Third-party integration security: 3/5
 | Credential | Scope | If it leaked |
 |---|---|---|
-| `HUBSPOT_TOKEN` (private app) | `crm.objects.contacts.read` and `.write` only | Contacts in this one test portal could be read and edited. No deals, settings or users. Revoke by rotating in HubSpot. |
+| `HUBSPOT_TOKEN` (service key) | `crm.objects.contacts.read` and `.write` only | Contacts in this one test portal could be read and edited. No deals, settings or users. Revoke by rotating in HubSpot. |
 | `SHEETS_WEBHOOK_SECRET` + URL | The web app accepts only `append` and `update` (the status columns of an existing lead). It can't read or delete. | Junk rows could be appended and status columns overwritten. Rotate by changing the script property and the Vercel variable. |
 | `GMAIL_APP_PASSWORD` | **Broad:** an app password gives SMTP/IMAP access to the whole Gmail account. | Mail could be sent from, and read in, that test account. It's a dedicated test account with nothing else in it. Revoke at myaccount.google.com/apppasswords. |
 

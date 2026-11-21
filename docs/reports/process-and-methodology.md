@@ -30,7 +30,7 @@ I built in the brief's priority order. Before writing any UI, I locked down the 
 Browser form ──POST /api/lead (same-origin, JSON)──▶ Vercel function (Node.js)
    guards: POST-only · Origin check · per-IP rate limit · body ≤10KB · zod re-validation · honeypot · ≥3s fill time
    1. Google Sheet  ← Apps Script web app (shared secret)            [first, awaited]
-   2. HubSpot upsert by email (private-app token)  ┐ in parallel,
+   2. HubSpot upsert by email (service key)        ┐ in parallel,
       Email to ai-labs@ via Gmail SMTP (nodemailer) ┘ each settled independently
    3. Sheet row updated with crm_status / email_status / HubSpot ID
    → 200 if the lead landed in ANY system, else 502 "unavailable" (user can retry)

@@ -36,19 +36,17 @@ If you change `Code.gs` later: **Deploy → Manage deployments → ✏️ → Ve
 
 ---
 
-## 2. HubSpot private app (contacts read/write only)
+## 2. HubSpot service key (contacts read/write only)
+
+New HubSpot accounts no longer offer private ("legacy") apps. Service keys replace them, and are sent the same way (`Authorization: Bearer …`).
 
 1. Create or sign in to a **free HubSpot** account (a test portal, not a client's).
-2. Open the private apps screen:
-   - **Settings** (gear, top right) → **Integrations → Private Apps**
-   - In newer portals this lives under **Development → Legacy apps → Create legacy app → Private**
-3. **Create a private app**:
-   - **Basic Info:** name `KlearStack website`.
-   - **Scopes:** search "contacts" and tick **only**:
-     - `crm.objects.contacts.read`
-     - `crm.objects.contacts.write`
-4. **Create app** → confirm → **Show token** → copy it (starts with `pat-`).
-5. Set `HUBSPOT_TOKEN` = the token.
+2. **Development → Keys → Service Keys → Create a service key.** (Older portals: Settings → Integrations → Private Apps also works; the token is used the same way.)
+3. Name it `KlearStack website` and add **only** these scopes:
+   - `crm.objects.contacts.read` (upsert looks the contact up by email)
+   - `crm.objects.contacts.write`
+4. **Create**, then copy the key straight away.
+5. Set `HUBSPOT_TOKEN` = the key.
 
 What gets written, all standard contact properties (no custom properties to create):
 
@@ -61,7 +59,7 @@ What gets written, all standard contact properties (no custom properties to crea
 | Solution, No. of documents, Pain point | `message` (one readable block) |
 | — | `lifecyclestage = lead`, `hs_lead_status = NEW` |
 
-If a token leaks, it can read and edit contacts in that portal only. Revoke it on the same screen (**Rotate token**).
+If a token leaks, it can read and edit contacts in that portal only. Revoke or rotate it on the same screen.
 
 ---
 

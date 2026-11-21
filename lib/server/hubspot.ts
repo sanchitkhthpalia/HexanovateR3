@@ -3,7 +3,7 @@ import { env } from "./env";
 import { fetchWithTimeout, NotConfigured, type LeadRecord } from "./lead-record";
 
 // HubSpot contact upsert by email (CRM v3 batch upsert with idProperty=email): a resubmission
-// updates the same contact instead of creating a duplicate. Private-app token, scopes
+// updates the same contact instead of creating a duplicate. Service key (or legacy private-app token), scopes
 // crm.objects.contacts.read + crm.objects.contacts.write only.
 const UPSERT_URL = "https://api.hubapi.com/crm/v3/objects/contacts/batch/upsert";
 
