@@ -1,0 +1,611 @@
+<frame id="3008:9178" name="Frame" x="-12457" y="3989" width="1200" height="3542">
+  <frame id="3008:9179" name="Group 1321315050" x="0" y="784" width="1200" height="7506">
+    <frame id="3008:9180" name="Frame 1618875844" x="0" y="784" width="1200" height="7506">
+      <ellipse id="3008:9182" name="Ellipse 335" x="-253" y="1324" width="646" height="200" />
+    </frame>
+  </frame>
+  <frame id="3008:9185" name="Pill" x="285" y="188" width="409" height="24" hidden="true">
+    <text id="3008:9186" name="Tagline" x="8" y="4" width="393" height="16" />
+  </frame>
+  <frame id="3008:9193" name="Frame 1618876062" x="96" y="24" width="1008" height="3518.610595703125">
+    <frame id="3008:9194" name="Frame 1618876865" x="0" y="0" width="1008" height="56">
+      <frame id="3008:9195" name="Frame 1618875847" x="0" y="0" width="1008" height="56">
+        <frame id="3008:9196" name="Frame 1618875851" x="0" y="0" width="1008" height="56">
+          <rounded-rectangle id="3008:9197" name="Rectangle 18530" x="249" y="50" width="76" height="6" />
+          <frame id="3008:9198" name="Frame 1618875882" x="-63" y="0" width="1134" height="56">
+            <rounded-rectangle id="3008:10032" name="Rectangle 18602" x="4" y="4" width="142" height="48" />
+            <frame id="3008:9205" name="Frame 1618876093" x="208" y="4" width="922" height="48">
+              <frame id="3008:9206" name="Webpages" x="0" y="12" width="506" height="24">
+                <frame id="3008:9207" name="Navigation tab" x="0" y="2" width="67" height="20">
+                  <text id="3008:9208" name="Text" x="0" y="0" width="49" height="20" />
+                  <frame id="3008:10019" name="Icon/20/CaretDown" x="53" y="3" width="14" height="14" />
+                </frame>
+                <frame id="3008:9211" name="Navigation tab" x="83" y="2" width="77" height="20">
+                  <text id="3008:9212" name="Text" x="0" y="0" width="59" height="20" />
+                  <frame id="3008:9213" name="Icon/20/CaretDown" x="77" y="17" width="14.000001223919753" height="14.000001223918844" />
+                </frame>
+                <frame id="3008:9215" name="Navigation tab" x="176" y="2" width="79" height="20">
+                  <text id="3008:9216" name="Text" x="0" y="0" width="61" height="20" />
+                  <frame id="3008:10022" name="Icon/20/CaretDown" x="65" y="3" width="14" height="14" />
+                </frame>
+                <frame id="3008:9219" name="Navigation tab" x="271" y="2" width="43" height="20">
+                  <text id="3008:9220" name="Text" x="0" y="0" width="43" height="20" />
+                  <instance id="3008:9221" name="Icon/20/CaretDown" x="45" y="8" width="20" height="20" hidden="true" />
+                </frame>
+                <frame id="3008:9222" name="Navigation tab" x="330" y="2" width="83" height="20">
+                  <text id="3008:9223" name="Text" x="0" y="0" width="65" height="20" />
+                  <frame id="3008:10025" name="Icon/20/CaretDown" x="69" y="3" width="14" height="14" />
+                </frame>
+                <frame id="3008:9226" name="Navigation tab" x="429" y="2" width="77" height="20">
+                  <text id="3008:9227" name="Text" x="0" y="0" width="59" height="20" />
+                  <frame id="3008:10028" name="Icon/20/CaretDown" x="63" y="3" width="14" height="14" />
+                </frame>
+              </frame>
+              <frame id="3008:9230" name="Frame 1618876092" x="550" y="0" width="372" height="48">
+                <frame id="3008:9231" name="Button - 40 - Brand" x="0" y="0" width="171" height="48">
+                  <text id="3008:9232" name="Try it for Free" x="24" y="12" width="95" height="24" />
+                  <frame id="3008:9233" name="Icon/20/ArrowRight" x="127" y="14" width="20" height="20">
+                    <instance id="3008:9234" name="ArrowRight" x="0" y="0" width="20" height="20" />
+                  </frame>
+                </frame>
+                <frame id="3008:9235" name="Group 1321315069" x="183" y="0" width="189" height="48">
+                  <frame id="3008:9236" name="Button - 40 - Brand" x="183" y="0" width="189" height="48">
+                    <text id="3008:9237" name="Get Free Demo" x="24" y="12" width="117" height="24" />
+                    <rounded-rectangle id="3008:9238" name="arrow_forward_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="149" y="16" width="16" height="16" />
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="3008:9479" name="Frame 1618875915" x="0" y="374" width="1008" height="3144.610595703125">
+      <frame id="3008:9632" name="Frame 1618875911" x="0" y="0" width="1008" height="292.00018310546875">
+        <rounded-rectangle id="3008:9633" name="Rectangle 18556" x="1008" y="183.849609375" width="1008" height="184" />
+        <frame id="3008:9634" name="Frame 1618876074" x="48" y="44" width="912" height="204.0001678466797">
+          <frame id="3008:9635" name="Frame 1618876089" x="0" y="0" width="912" height="204.0001678466797">
+            <text id="3008:9636" name="Title" x="0" y="0" width="912" height="120" />
+            <frame id="3008:9637" name="Group 1321315069" x="347.5" y="160" width="217" height="44.00016784667969">
+              <frame id="3008:9638" name="Button - 40 - Brand" x="347.5" y="160" width="217" height="44.00016784667969">
+                <text id="3008:9639" name="Get A Free Demo" x="32" y="10.000083923339844" width="129" height="24" />
+                <rounded-rectangle id="3008:9640" name="arrow_forward_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="169" y="14.000083923339844" width="16" height="16" />
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <frame id="3008:9582" name="Group 1321315192" x="0" y="412.00018310546875" width="1008" height="598.6104736328125">
+        <rounded-rectangle id="3008:9583" name="image 164" x="3.637978807091713e-12" y="412.0000957250595" width="1008" height="392.5894775390625" />
+        <rounded-rectangle id="3008:9584" name="image 165" x="3.637978807091713e-12" y="773.6422119140625" width="1008" height="236.96841430664062" />
+        <frame id="3008:9585" name="Group 1321315069" x="318" y="927.0001831054688" width="371" height="48">
+          <frame id="3008:9586" name="Button - 40 - Brand" x="318" y="927.0001831054688" width="371" height="48">
+            <text id="3008:9587" name="Automate your workflows with us" x="46.5" y="12" width="254" height="24" />
+            <rounded-rectangle id="3008:9588" name="arrow_forward_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="308.5" y="16" width="16" height="16" />
+          </frame>
+        </frame>
+      </frame>
+      <frame id="3009:10045" name="Group 1321315202" x="0" y="1130.610595703125" width="1008" height="656">
+        <frame id="3009:10046" name="Lead Generation Form 2 folds" x="0" y="1130.610595703125" width="1008" height="656">
+          <frame id="3009:10047" name="Frame 1618874121" x="0" y="0" width="1008" height="656">
+            <frame id="3009:10048" name="Frame 1000008790" x="0" y="0" width="598" height="656">
+              <frame id="3009:10049" name="Frame 1618876969" x="52" y="52" width="460" height="410">
+                <frame id="3009:10050" name="Frame 1618873485" x="0" y="0" width="460" height="298">
+                  <frame id="3009:10051" name="Logo wrapper" x="0" y="0" width="186" height="44">
+                    <frame id="3009:10052" name="Monogram wrapper" x="0" y="0" width="44" height="44">
+                      <frame id="3009:10053" name="KlearStack Monogram" x="8" y="7" width="28" height="28">
+                        <vector id="3009:10054" name="K" x="9.421875" y="0" width="18.581815719604492" height="28" />
+                        <vector id="3009:10055" name="Arrow" x="0" y="8.9111328125" width="18.581815719604492" height="19.090909957885742" />
+                      </frame>
+                    </frame>
+                    <text id="3009:10056" name="KlearStack" x="50" y="8" width="136" height="28" />
+                  </frame>
+                  <frame id="3009:10057" name="Frame 1618876968" x="0" y="72" width="460" height="226">
+                    <text id="3009:10058" name="Title" x="0" y="0" width="460" height="162" />
+                    <text id="3009:10059" name="No templates. No setup calls. See your documents, processed live, right now." x="0" y="174" width="460" height="52" />
+                  </frame>
+                </frame>
+                <frame id="3009:10060" name="Frame 1618873452" x="0" y="322" width="460" height="88">
+                  <frame id="3009:10061" name="Frame 1000008692" x="12" y="0" width="231" height="24">
+                    <frame id="3009:10062" name="Group 5" x="0" y="2" width="20" height="20">
+                      <ellipse id="3009:10063" name="Ellipse 1" x="-7.275957614183426e-12" y="2" width="20" height="20" />
+                      <frame id="3009:10064" name="Frame" x="3.3705356121063232" y="5.332403182983398" width="13.33333969116211" height="13.33333969116211" />
+                    </frame>
+                    <text id="3009:10067" name="99%* World Class Accuracy" x="32" y="0" width="199" height="24" />
+                  </frame>
+                  <frame id="3009:10068" name="Frame 1000008696" x="12" y="32" width="281" height="24">
+                    <frame id="3009:10069" name="Group 5" x="0" y="2" width="20" height="20">
+                      <ellipse id="3009:10070" name="Ellipse 1" x="-7.275957614183426e-12" y="2" width="20" height="20" />
+                      <frame id="3009:10071" name="Frame" x="3.3705356121063232" y="5.332403182983398" width="13.33333969116211" height="13.33333969116211" />
+                    </frame>
+                    <text id="3009:10074" name="Proprietary AI for Ultimate Security" x="32" y="0" width="249" height="24" />
+                  </frame>
+                  <frame id="3009:10075" name="Frame 1000008695" x="12" y="64" width="270" height="24">
+                    <frame id="3009:10076" name="Group 5" x="0" y="2" width="20" height="20">
+                      <ellipse id="3009:10077" name="Ellipse 1" x="-7.275957614183426e-12" y="2" width="20" height="20" />
+                      <frame id="3009:10078" name="Frame" x="3.3705356121063232" y="5.332403182983398" width="13.33333969116211" height="13.33333969116211" />
+                    </frame>
+                    <text id="3009:10081" name="Pilot Ready in Less than 7 Hours*" x="32" y="0" width="238" height="24" />
+                  </frame>
+                </frame>
+              </frame>
+              <frame id="3009:10082" name="Frame 1618875885" x="52" y="566" width="460" height="46">
+                <text id="3009:10083" name="Used by Many, Loved by All!" x="0" y="1" width="106" height="44" />
+                <rounded-rectangle id="3009:10084" name="Landmark Group" x="146" y="9" width="103" height="28" />
+                <rounded-rectangle id="3009:10085" name="Network International" x="289" y="14.37804889678955" width="101" height="17.2439022064209" />
+                <rounded-rectangle id="3009:10086" name="Elevation 10K" x="430" y="9" width="102" height="28" />
+                <rounded-rectangle id="3009:10087" name="Landmark Group" x="572" y="9" width="103" height="28" />
+                <rounded-rectangle id="3009:10088" name="Network International" x="715" y="14.463415145874023" width="100" height="17.073169708251953" />
+                <rounded-rectangle id="3009:10089" name="Elevation 10K" x="855" y="9" width="102" height="28" />
+                <rounded-rectangle id="3009:10090" name="Konika Minolta" x="997" y="0" width="77" height="46" />
+                <rounded-rectangle id="3009:10091" name="Rectangle 18591" x="395" y="-0.4990234375" width="65" height="46" />
+              </frame>
+            </frame>
+            <frame id="3009:10092" name="Frame 1000008791" x="598" y="0" width="410" height="656">
+              <text id="3009:10093" name="Title" x="31" y="30.999969482421875" width="348" height="50" />
+              <frame id="3009:10094" name="Frame 1618874119" x="31" y="108.99996948242188" width="348" height="516.0000610351562">
+                <frame id="3009:10095" name="Frame 1618874114" x="-64" y="0" width="412" height="457.0000305175781">
+                  <frame id="3009:10096" name="Frame 1618876965" x="0" y="0" width="412" height="394">
+                    <frame id="3009:10097" name="Frame 1618876902" x="0" y="0" width="412" height="330">
+                      <vector id="3009:10098" name="Vector 6789" x="0" y="44.5009765625" width="33" height="21.052734375" />
+                      <vector id="3009:10099" name="Vector 6796" x="0" y="100.5009765625" width="33" height="21.052734375" />
+                      <vector id="3009:10100" name="Vector 6795" x="0" y="156.5009765625" width="33" height="21.052734375" />
+                      <vector id="3009:10101" name="Vector 6794" x="0" y="212.5009765625" width="33" height="21.052734375" />
+                      <vector id="3009:10102" name="Vector 6797" x="0" y="326.5009765625" width="33" height="21.052734375" />
+                      <frame id="3009:10103" name="Text" x="0" y="0" width="412" height="48">
+                        <text id="3009:10104" name="Name*" x="20" y="12" width="46" height="24" />
+                      </frame>
+                      <frame id="3009:10105" name="Text" x="0" y="56" width="412" height="48">
+                        <text id="3009:10106" name="Contact no.*" x="20" y="12" width="83" height="24" />
+                      </frame>
+                      <frame id="3009:10107" name="Text" x="0" y="112" width="412" height="48">
+                        <text id="3009:10108" name="Email ID*" x="20" y="12" width="59" height="24" />
+                      </frame>
+                      <frame id="3009:10109" name="Frame 1618876971" x="0" y="168" width="412" height="48">
+                        <frame id="3009:10110" name="Text" x="0" y="0" width="205" height="48">
+                          <text id="3009:10111" name="Solution Required*" x="20" y="12" width="130" height="24" />
+                          <frame id="3009:10112" name="Icon/20/CaretDown" x="165" y="14" width="20" height="20" />
+                        </frame>
+                        <frame id="3009:10114" name="Text" x="213" y="0" width="199" height="48">
+                          <frame id="3009:10115" name="Frame 1618876903" x="20" y="12" width="159" height="24">
+                            <text id="3009:10116" name="No. of Documents*" x="0" y="0" width="133" height="24" />
+                            <frame id="3009:10117" name="Icon/20/CaretDown" x="139" y="2" width="20" height="20" />
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="3009:10119" name="Text" x="0" y="224" width="412" height="106">
+                        <text id="3009:10120" name="Pain Point and Expectations (optional)" x="20" y="14" width="246" height="24" />
+                      </frame>
+                    </frame>
+                    <frame id="3009:10121" name="Frame 1618876010" x="203" y="346" width="209" height="48">
+                      <frame id="3009:10122" name="Group 1321315069" x="0" y="0" width="209" height="48">
+                        <frame id="3009:10123" name="Button - 40 - Brand" x="0" y="0" width="209" height="48">
+                          <text id="3009:10124" name="Free Live Demo" x="32" y="12" width="117" height="24" />
+                          <rounded-rectangle id="3009:10125" name="arrow_forward_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="157" y="16" width="16" height="16" />
+                        </frame>
+                      </frame>
+                    </frame>
+                  </frame>
+                  <frame id="3009:10126" name="Frame 1000008776" x="105.99996948242188" y="418" width="306.0000305175781" height="39.00001907348633">
+                    <frame id="3009:10127" name="Frame 1000007907" x="130.00001525878906" y="39.00001525878906" width="130.00001866827733" height="39.000015179659385">
+                      <frame id="3009:10128" name="Group 1000007599" x="36.000003814697266" y="37.5" width="36" height="36">
+                        <rounded-rectangle id="3009:10129" name="Rectangle 18471" x="36.000003814697266" y="37.5" width="36" height="36" />
+                        <frame id="3009:10130" name="Mask group" x="35.43750371634664" y="36.37500004917531" width="33.75" height="33.75">
+                          <ellipse id="3009:10131" name="Ellipse 8" x="35.43750371634664" y="36.3750000491744" width="33.75" height="33.75" />
+                          <rounded-rectangle id="3009:10132" name="image 28" x="36.50625383239221" y="37.42968745574222" width="35.859375" height="35.859375" />
+                        </frame>
+                      </frame>
+                      <frame id="3009:10133" name="Frame 1618876977" x="48.000003814697266" y="0" width="82.0000110388828" height="39.00001098336543">
+                        <text id="3009:10134" name="4.9/5 G2" x="54" y="20" width="54" height="20" />
+                        <frame id="3009:10135" name="Frame 1000007905" x="0" y="24.000003814697266" width="82.00000894073673" height="15.000008122342479">
+                          <frame id="3009:10136" name="Frame 1000007906" x="0" y="0" width="82.00000894073673" height="15.000008122342479">
+                            <frame id="3009:10137" name="Group 1000007592" x="14.000000953674316" y="14.5" width="14" height="14" />
+                            <star id="3009:10143" name="Star 3" x="31" y="15" width="15" height="15" />
+                            <star id="3009:10144" name="Star 4" x="48" y="15" width="15" height="15" />
+                            <star id="3009:10145" name="Star 5" x="65" y="15" width="15" height="15" />
+                            <star id="3009:10146" name="Star 1" x="82" y="15" width="15" height="15" />
+                          </frame>
+                        </frame>
+                      </frame>
+                    </frame>
+                    <frame id="3009:10147" name="Frame 1000007907" x="306" y="39.00001907348633" width="144.00000340948827" height="39.000020218274585">
+                      <rounded-rectangle id="3009:10148" name="image 159" x="36.000003814697266" y="37.500003814697266" width="36" height="36" />
+                      <frame id="3009:10149" name="Frame 1618876978" x="48.000003814697266" y="0" width="96.00000340948827" height="39.00001602198063">
+                        <text id="3009:10150" name="4.7/5 Trustpilot" x="96" y="20" width="96" height="20" />
+                        <frame id="3009:10151" name="Frame 1000007905" x="0" y="24.00000762939453" width="82.00000894073673" height="15.000008122342479">
+                          <frame id="3009:10152" name="Frame 1000007905" x="0" y="0" width="82.00000894073673" height="15.000008122342479">
+                            <frame id="3009:10153" name="Group 1000007591" x="14.000000953674316" y="14.5" width="14" height="14" />
+                            <star id="3009:10159" name="Star 3" x="31.000001907348633" y="15" width="15" height="15" />
+                            <star id="3009:10160" name="Star 4" x="48" y="15" width="15" height="15" />
+                            <star id="3009:10161" name="Star 5" x="65" y="15" width="15" height="15" />
+                            <star id="3009:10162" name="Star 1" x="82" y="15" width="15" height="15" />
+                          </frame>
+                        </frame>
+                      </frame>
+                    </frame>
+                  </frame>
+                </frame>
+                <frame id="3009:10163" name="Frame 1618876972" x="0" y="481.0000305175781" width="348" height="35.000030517578125">
+                  <vector id="3009:10164" name="Vector 183" x="0" y="0.000030517578125" width="348" height="0.00003042312619072618" />
+                  <text id="3009:10165" name="All your data is safe and secure with us!" x="0" y="16.000030517578125" width="348" height="19" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+      <frame id="3008:9718" name="Group 1321315078" x="-96" y="1906.610595703125" width="1200" height="1238">
+        <frame id="3008:9719" name="Group 1321315081" x="-95.99999999998545" y="1906.610595703125" width="1200" height="1238">
+          <frame id="3008:9720" name="Frame 1618876140" x="-95.99999999998545" y="1906.610595703125" width="1200" height="1238">
+            <ellipse id="3008:9721" name="Ellipse 335" x="1530" y="231.5" width="712.0000971407571" height="413.00000120986624" />
+            <frame id="3008:9722" name="Frame 1618875951" x="96" y="80" width="1008" height="926">
+              <frame id="3008:9723" name="Frame 1618875959" x="0" y="0" width="1008" height="926">
+                <frame id="3008:9724" name="Frame 1618876086" x="0" y="0" width="1008" height="637">
+                  <frame id="3008:9725" name="Frame 1618875967" x="0" y="0" width="1008" height="513">
+                    <frame id="3008:9726" name="Frame 1618875961" x="0" y="0" width="1008" height="205">
+                      <frame id="3008:9727" name="Frame 1618875953" x="0" y="0" width="464" height="166">
+                        <frame id="3008:9728" name="Frame 1618874243" x="0" y="0" width="464" height="166">
+                          <rounded-rectangle id="3008:10034" name="Rectangle 18602" x="0" y="0" width="259" height="48" />
+                          <frame id="3008:9735" name="Frame 1618874266" x="0" y="72" width="464" height="94">
+                            <frame id="3008:9736" name="Frame 1618874188" x="0" y="0" width="464" height="52">
+                              <text id="3008:9737" name="Title" x="0" y="0" width="464" height="52" />
+                            </frame>
+                            <frame id="3008:9738" name="Frame 1618874644" x="0" y="66" width="104" height="28">
+                              <frame id="3008:9739" name="Icon" x="0" y="0" width="28" height="28">
+                                <rounded-rectangle id="3008:9740" name="Rectangle" x="5" y="5" width="18" height="18" />
+                              </frame>
+                              <frame id="3008:9741" name="Icon" x="38" y="0" width="28" height="28">
+                                <rounded-rectangle id="3008:9742" name="mail_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="5.5" y="7" width="17" height="14" />
+                              </frame>
+                              <frame id="3008:9743" name="Icon" x="76" y="0" width="28" height="28">
+                                <rounded-rectangle id="3008:9744" name="Rectangle" x="5" y="5" width="18" height="18" />
+                              </frame>
+                            </frame>
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="3008:9745" name="Frame 1618875969" x="602" y="0" width="406" height="205">
+                        <frame id="3008:9746" name="Nav group" x="0" y="0" width="212" height="140">
+                          <frame id="3008:9747" name="Frame 1618874246" x="0" y="0" width="212" height="140">
+                            <frame id="3008:9748" name="Navigation item" x="0" y="0" width="212" height="20">
+                              <text id="3008:9749" name="How it works?" x="0" y="0" width="200" height="20" />
+                              <rounded-rectangle id="3008:9750" name="Seperator" x="212" y="2" width="2.000000699381417" height="16.00000008742245" />
+                              <instance id="3008:9751" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                            <frame id="3008:9752" name="Navigation item" x="0" y="40" width="212" height="20">
+                              <text id="3008:9753" name="Check All Document Types" x="0" y="0" width="200" height="20" />
+                              <rounded-rectangle id="3008:9754" name="Seperator" x="212" y="2" width="2.000000699381417" height="16.00000008742245" />
+                              <instance id="3008:9755" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                            <frame id="3008:9756" name="Navigation item" x="0" y="80" width="212" height="20">
+                              <text id="3008:9757" name="Pricing" x="0" y="0" width="200" height="20" />
+                              <rounded-rectangle id="3008:9758" name="Seperator" x="212" y="2" width="2.000000699381417" height="16.00000008742245" />
+                              <instance id="3008:9759" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                            <frame id="3008:9760" name="Navigation item" x="0" y="120" width="212" height="20">
+                              <text id="3008:9761" name="Integrations" x="0" y="0" width="200" height="20" />
+                              <rounded-rectangle id="3008:9762" name="Seperator" x="212" y="2" width="2.000000699381417" height="16.00000008742245" />
+                              <instance id="3008:9763" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                          </frame>
+                        </frame>
+                        <frame id="3008:9764" name="Nav group" x="258" y="0" width="148" height="205">
+                          <frame id="3008:9765" name="Title" x="80" y="0" width="68" height="20">
+                            <text id="3008:9766" name="Solutions" x="0" y="0" width="68" height="20" />
+                          </frame>
+                          <frame id="3008:9767" name="Divider" x="124" y="36" width="24" height="1">
+                            <rounded-rectangle id="3008:9768" name="Seperator" x="0" y="0" width="24" height="1" />
+                          </frame>
+                          <frame id="3008:9769" name="Frame 1618874246" x="0" y="53" width="148" height="152">
+                            <frame id="3008:9770" name="Navigation item" x="0" y="0" width="148" height="23">
+                              <text id="3008:9771" name="Accounts Payable" x="0" y="0" width="148" height="23" />
+                              <instance id="3008:9772" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                            <frame id="3008:9773" name="Navigation item" x="0" y="43" width="148" height="23">
+                              <text id="3008:9774" name="Supply Chain" x="0" y="0" width="148" height="23" />
+                              <instance id="3008:9775" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                            <frame id="3008:9776" name="Navigation item" x="0" y="86" width="148" height="23">
+                              <text id="3008:9777" name="Consumer Loans" x="0" y="0" width="148" height="23" />
+                              <instance id="3008:9778" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                            <frame id="3008:9779" name="Navigation item" x="0" y="129" width="148" height="23">
+                              <text id="3008:9780" name="ID Card" x="0" y="0" width="148" height="23" />
+                              <instance id="3008:9781" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                          </frame>
+                        </frame>
+                      </frame>
+                    </frame>
+                    <frame id="3008:9782" name="Frame 1618875954" x="0" y="265" width="1008" height="248">
+                      <frame id="3008:9783" name="Nav group" x="0" y="0" width="132" height="213">
+                        <frame id="3008:9784" name="Title" x="61" y="0" width="71" height="20">
+                          <text id="3008:9785" name="Industries" x="0" y="0" width="71" height="20" />
+                        </frame>
+                        <frame id="3008:9786" name="Divider" x="108" y="36" width="24" height="1">
+                          <rounded-rectangle id="3008:9787" name="Seperator" x="0" y="0" width="24" height="1" />
+                        </frame>
+                        <frame id="3008:9788" name="Frame 1618874246" x="0" y="53" width="132" height="160">
+                          <frame id="3008:9789" name="Frame 1618874271" x="67" y="0" width="65" height="31">
+                            <frame id="3008:9790" name="Navigation item" x="16" y="4" width="33" height="23">
+                              <text id="3008:9791" name="BFSI" x="0" y="0" width="33" height="23" />
+                              <instance id="3008:9792" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                            </frame>
+                          </frame>
+                          <frame id="3008:9793" name="Navigation item" x="0" y="51" width="132" height="23">
+                            <text id="3008:9794" name="Healthcare" x="0" y="0" width="132" height="23" />
+                            <instance id="3008:9795" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9796" name="Navigation item" x="0" y="94" width="132" height="23">
+                            <text id="3008:9797" name="Telecom" x="0" y="0" width="132" height="23" />
+                            <instance id="3008:9798" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9799" name="Navigation item" x="0" y="137" width="132" height="23">
+                            <text id="3008:9800" name="Manufacturing" x="0" y="0" width="132" height="23" />
+                            <instance id="3008:9801" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="3008:9802" name="Nav group" x="178" y="0" width="184" height="248">
+                        <frame id="3008:9803" name="Title" x="110" y="0" width="74" height="20">
+                          <text id="3008:9804" name="Resources" x="0" y="0" width="74" height="20" />
+                        </frame>
+                        <frame id="3008:9805" name="Divider" x="160" y="36" width="24" height="1">
+                          <rounded-rectangle id="3008:9806" name="Seperator" x="0" y="0" width="24" height="1" />
+                        </frame>
+                        <frame id="3008:9807" name="Frame 1618874246" x="0" y="53" width="184" height="195">
+                          <frame id="3008:9808" name="Navigation item" x="0" y="0" width="184" height="23">
+                            <text id="3008:9809" name="Blog" x="0" y="0" width="184" height="23" />
+                            <instance id="3008:9810" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9811" name="Navigation item" x="0" y="43" width="184" height="23">
+                            <text id="3008:9812" name="Guides" x="0" y="0" width="184" height="23" />
+                            <instance id="3008:9813" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9814" name="Navigation item" x="0" y="86" width="184" height="23">
+                            <text id="3008:9815" name="Newsroom" x="0" y="0" width="184" height="23" />
+                            <instance id="3008:9816" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9817" name="Navigation item" x="0" y="129" width="184" height="23">
+                            <text id="3008:9818" name="API Documentation" x="0" y="0" width="184" height="23" />
+                            <instance id="3008:9819" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9820" name="Navigation item" x="0" y="172" width="184" height="23">
+                            <text id="3008:9821" name="Product Documentation" x="0" y="0" width="184" height="23" />
+                            <instance id="3008:9822" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="3008:9823" name="Nav group" x="408" y="0" width="132" height="162">
+                        <frame id="3008:9824" name="Title" x="94" y="0" width="38" height="20">
+                          <text id="3008:9825" name="Tools" x="0" y="0" width="38" height="20" />
+                        </frame>
+                        <frame id="3008:9826" name="Divider" x="108" y="36" width="24" height="1">
+                          <rounded-rectangle id="3008:9827" name="Seperator" x="0" y="0" width="24" height="1" />
+                        </frame>
+                        <frame id="3008:9828" name="Frame 1618874246" x="0" y="53" width="132" height="109">
+                          <frame id="3008:9829" name="Navigation item" x="0" y="0" width="132" height="23">
+                            <text id="3008:9830" name="Compress PDF" x="0" y="0" width="132" height="23" />
+                            <instance id="3008:9831" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9832" name="Navigation item" x="0" y="43" width="132" height="23">
+                            <text id="3008:9833" name="Merge PDF" x="0" y="0" width="132" height="23" />
+                            <instance id="3008:9834" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9835" name="Navigation item" x="0" y="86" width="132" height="23">
+                            <text id="3008:9836" name="PDF to Image" x="0" y="0" width="132" height="23" />
+                            <instance id="3008:9837" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="3008:9838" name="Nav group" x="586" y="0" width="228" height="205">
+                        <frame id="3008:9839" name="Title" x="140" y="0" width="88" height="20">
+                          <text id="3008:9840" name="Capabilities" x="0" y="0" width="88" height="20" />
+                        </frame>
+                        <frame id="3008:9841" name="Divider" x="204" y="36" width="24" height="1">
+                          <rounded-rectangle id="3008:9842" name="Seperator" x="0" y="0" width="24" height="1" />
+                        </frame>
+                        <frame id="3008:9843" name="Frame 1618874246" x="0" y="53" width="228" height="152">
+                          <frame id="3008:9844" name="Navigation item" x="0" y="0" width="228" height="23">
+                            <text id="3008:9845" name="Document Processing" x="0" y="0" width="228" height="23" />
+                            <instance id="3008:9846" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9847" name="Navigation item" x="0" y="43" width="228" height="23">
+                            <text id="3008:9848" name="Document Interpretation" x="0" y="0" width="228" height="23" />
+                            <instance id="3008:9849" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9850" name="Navigation item" x="0" y="86" width="228" height="23">
+                            <text id="3008:9851" name="Document Extraction" x="0" y="0" width="228" height="23" />
+                            <instance id="3008:9852" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9853" name="Navigation item" x="0" y="129" width="228" height="23">
+                            <text id="3008:9854" name="Straight Through Protocol (STP)" x="0" y="0" width="228" height="23" />
+                            <instance id="3008:9855" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="3008:9856" name="Nav group" x="860" y="0" width="148" height="162">
+                        <frame id="3008:9857" name="Title" x="78" y="0" width="70" height="20">
+                          <text id="3008:9858" name="Company" x="0" y="0" width="70" height="20" />
+                        </frame>
+                        <frame id="3008:9859" name="Divider" x="124" y="36" width="24" height="1">
+                          <rounded-rectangle id="3008:9860" name="Seperator" x="0" y="0" width="24" height="1" />
+                        </frame>
+                        <frame id="3008:9861" name="Frame 1618874246" x="0" y="53" width="148" height="109">
+                          <frame id="3008:9862" name="Navigation item" x="0" y="0" width="148" height="23">
+                            <text id="3008:9863" name="About" x="0" y="0" width="148" height="23" />
+                            <instance id="3008:9864" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9865" name="Navigation item" x="0" y="43" width="148" height="23">
+                            <text id="3008:9866" name="Contact" x="0" y="0" width="148" height="23" />
+                            <instance id="3008:9867" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                          <frame id="3008:9868" name="Navigation item" x="0" y="86" width="148" height="23">
+                            <text id="3008:9869" name="Careers" x="0" y="0" width="148" height="23" />
+                            <instance id="3008:9870" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                        </frame>
+                      </frame>
+                    </frame>
+                  </frame>
+                  <frame id="3008:9871" name="Frame 1618876085" x="0" y="593" width="1008" height="44">
+                    <text id="3008:9872" name="Our Newsletter on Latest Trends" x="0" y="4" width="329" height="36" />
+                    <frame id="3008:9873" name="Frame 1618874245" x="387" y="0" width="621" height="44">
+                      <frame id="3008:9874" name="Text" x="0" y="0" width="442" height="44">
+                        <text id="3008:9875" name="Enter your E-mail address" x="138.5" y="10" width="165" height="24" />
+                      </frame>
+                      <frame id="3008:9876" name="Button - 40 - Brand" x="452" y="0" width="169" height="44">
+                        <text id="3008:9877" name="Subscribe" x="32" y="10" width="77" height="24" />
+                        <instance id="3008:9878" name="Icon/20/ArrowRight" x="117" y="12" width="20" height="20" />
+                      </frame>
+                    </frame>
+                  </frame>
+                </frame>
+                <vector id="3008:9879" name="Divider" x="0" y="685" width="1008" height="0" />
+                <frame id="3008:9880" name="Frame 1618875968" x="0" y="733" width="994" height="121">
+                  <frame id="3008:9881" name="Nav group" x="0" y="0" width="467" height="121">
+                    <frame id="3008:9882" name="Frame 86" x="0" y="0" width="467" height="121">
+                      <frame id="3008:9883" name="Frame 1618875955" x="0" y="0" width="467" height="74">
+                        <frame id="3008:9884" name="Navigation item" x="0" y="0" width="467" height="24">
+                          <frame id="3008:9885" name="Frame 1618875952" x="0" y="0" width="57.000099182128906" height="24">
+                            <frame id="3008:9886" name="Title" x="0" y="0" width="44" height="24">
+                              <text id="3008:9887" name="India" x="0" y="0" width="44" height="24" />
+                            </frame>
+                            <rounded-rectangle id="3008:9888" name="Seperator" x="56" y="20" width="1.0001007159753499" height="16.000000043715772" />
+                          </frame>
+                          <text id="3008:9889" name="Lorem ipsum" x="65.0000991821289" y="0" width="111" height="24" />
+                          <instance id="3008:9890" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                        </frame>
+                        <frame id="3008:9891" name="Frame 90" x="0" y="30" width="467" height="44">
+                          <frame id="3008:9892" name="Navigation item" x="0" y="0" width="467" height="44">
+                            <text id="3008:9893" name="City Tower, Sixth Floor, 17, Boat Club Road, Pune, India" x="0" y="0" width="467" height="44" />
+                            <instance id="3008:9894" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="3008:9895" name="Frame 93" x="0" y="85" width="385" height="36">
+                        <frame id="3008:9896" name="Frame 91" x="0" y="0" width="165" height="36">
+                          <frame id="3008:9897" name="Icon" x="0" y="0" width="36" height="36">
+                            <rounded-rectangle id="3008:9898" name="call_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="9" y="9" width="18" height="18" />
+                          </frame>
+                          <text id="3008:9899" name="+91 94220 84589" x="44" y="8" width="121" height="20" />
+                        </frame>
+                        <frame id="3008:9900" name="Frame 92" x="193" y="0" width="192" height="36">
+                          <frame id="3008:9901" name="Icon" x="0" y="0" width="36" height="36">
+                            <rounded-rectangle id="3008:9902" name="mail_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="7" y="9" width="22" height="18" />
+                          </frame>
+                          <text id="3008:9903" name="sales@loremispu.com" x="44" y="8" width="148" height="20" />
+                          <instance id="3008:9904" name="Icon/20/ArrowRight" x="116" y="6" width="20" height="20" hidden="true" />
+                        </frame>
+                      </frame>
+                    </frame>
+                  </frame>
+                  <frame id="3008:9905" name="Nav group" x="527" y="0" width="467" height="121">
+                    <frame id="3008:9906" name="Frame 86" x="0" y="0" width="467" height="121">
+                      <frame id="3008:9907" name="Frame 1618875955" x="0" y="0" width="467" height="74">
+                        <frame id="3008:9908" name="Navigation item" x="0" y="0" width="467" height="24">
+                          <frame id="3008:9909" name="Frame 1618875952" x="0" y="0" width="52.000099182128906" height="24">
+                            <frame id="3008:9910" name="Title" x="0" y="0" width="39" height="24">
+                              <text id="3008:9911" name="USA" x="0" y="0" width="39" height="24" />
+                            </frame>
+                            <rounded-rectangle id="3008:9912" name="Seperator" x="51" y="20" width="1.0001007159753499" height="16.000000043715772" />
+                          </frame>
+                          <text id="3008:10036" name="Lorem ipsum" x="60.000099182128906" y="0" width="111" height="24" />
+                          <instance id="3008:9914" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                        </frame>
+                        <frame id="3008:9915" name="Frame 90" x="0" y="30" width="467" height="44">
+                          <frame id="3008:9916" name="Navigation item" x="0" y="0" width="467" height="44">
+                            <text id="3008:9917" name="Lorem ipsum, Inc. 371 Hoes Lane, Suite 200, Piscataway, NJ 08854, USA" x="0" y="0" width="467" height="44" />
+                            <instance id="3008:9918" name="Icon/20/ArrowRight" x="78" y="6" width="20" height="20" hidden="true" />
+                          </frame>
+                        </frame>
+                      </frame>
+                      <frame id="3008:9919" name="Frame 93" x="0" y="85" width="387" height="36">
+                        <frame id="3008:9920" name="Frame 91" x="0" y="0" width="167" height="36">
+                          <frame id="3008:9921" name="Icon" x="0" y="0" width="36" height="36">
+                            <rounded-rectangle id="3008:9922" name="call_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="9" y="9" width="18" height="18" />
+                          </frame>
+                          <text id="3008:9923" name="+1 (973) 791-8875" x="44" y="8" width="123" height="20" />
+                        </frame>
+                        <frame id="3008:9924" name="Frame 92" x="195" y="0" width="192" height="36">
+                          <frame id="3008:9925" name="Icon" x="0" y="0" width="36" height="36">
+                            <rounded-rectangle id="3008:9926" name="mail_80dp_FFFFFF_FILL0_wght400_GRAD0_opsz48" x="7" y="9" width="22" height="18" />
+                          </frame>
+                          <text id="3008:9927" name="sales@loremispu.com" x="44" y="8" width="148" height="20" />
+                          <instance id="3008:9928" name="Icon/20/ArrowRight" x="116" y="6" width="20" height="20" hidden="true" />
+                        </frame>
+                      </frame>
+                    </frame>
+                  </frame>
+                </frame>
+                <frame id="3008:9929" name="Frame 1618874265" x="0" y="902" width="1008" height="24">
+                  <frame id="3008:9930" name="Text" x="0" y="0" width="1008" height="24">
+                    <frame id="3008:9931" name="Privacy &amp; Terms" x="0" y="0" width="399" height="24">
+                      <text id="3008:9932" name="Privacy Policy" x="0" y="2" width="92" height="20" />
+                      <text id="3008:9933" name="|" x="100" y="0" width="4" height="24" />
+                      <text id="3008:9934" name="Terms &amp; Conditions" x="112" y="2" width="129" height="20" />
+                      <text id="3008:9935" name="|" x="249" y="0" width="4" height="24" />
+                      <text id="3008:9936" name="Cookie Policy" x="261" y="2" width="90" height="20" />
+                      <text id="3008:9937" name="|" x="359" y="0" width="4" height="24" />
+                      <text id="3008:9938" name="DPA" x="371" y="2" width="28" height="20" />
+                    </frame>
+                    <text id="3008:9939" name="© KlearStack 2026" x="881" y="2" width="127" height="20" />
+                  </frame>
+                </frame>
+                <frame id="3008:9940" name="Group 1321315089" x="-19" y="957.5" width="1081" height="200">
+                  <frame id="3008:9941" name="Group 1321315088" x="-19" y="957.5" width="1081" height="200">
+                    <text id="3008:9942" name="Lorem Ipsu" x="-19" y="957.5" width="1081" height="200" />
+                  </frame>
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+    <frame id="3008:9974" name="Group 1321315026" x="224" y="50" width="562" height="275">
+      <regular-polygon id="3008:9975" name="Polygon 4" x="257" y="50" width="24" height="24" />
+      <frame id="3008:9976" name="Platform" x="224" y="65" width="562" height="260">
+        <frame id="3008:9977" name="Sub nav list" x="0" y="0" width="248" height="260">
+          <frame id="3008:9978" name="Sub nav item" x="24" y="24" width="200" height="44">
+            <frame id="3008:9979" name="Icon" x="4" y="4" width="36" height="36">
+              <instance id="3008:9980" name="Icon/20/SealCheck" x="6" y="6" width="24" height="24" />
+            </frame>
+            <text id="3008:9981" name="Capabilities" x="52" y="10" width="86" height="24" />
+          </frame>
+          <frame id="3008:9982" name="Sub nav item" x="24" y="80" width="200" height="44">
+            <frame id="3008:9983" name="Icon" x="4" y="4" width="36" height="36">
+              <instance id="3008:9984" name="Icon/20/SealCheck" x="8" y="8" width="20" height="20" />
+            </frame>
+            <text id="3008:9985" name="Features" x="52" y="10" width="63" height="24" />
+          </frame>
+          <frame id="3008:9986" name="Sub nav item" x="24" y="136" width="200" height="44">
+            <frame id="3008:9987" name="Icon" x="4" y="4" width="36" height="36">
+              <instance id="3008:9988" name="Icon/20/SealCheck" x="8" y="8" width="20" height="20" />
+            </frame>
+            <text id="3008:9989" name="Integration" x="52" y="10" width="79" height="24" />
+          </frame>
+          <frame id="3008:9990" name="Sub nav item" x="24" y="192" width="200" height="44">
+            <frame id="3008:9991" name="Icon" x="4" y="4" width="36" height="36">
+              <instance id="3008:9992" name="Icon/20/SealCheck" x="8" y="8" width="20" height="20" />
+            </frame>
+            <text id="3008:9993" name="Document Types" x="52" y="10" width="122" height="24" />
+          </frame>
+        </frame>
+        <frame id="3008:9994" name="Third child list" x="248" y="0" width="314" height="260">
+          <frame id="3008:9995" name="List" x="24" y="24" width="242" height="184">
+            <frame id="3008:9996" name="Navigation item" x="0" y="0" width="149" height="34">
+              <text id="3008:9997" name="Data Processing" x="0" y="6" width="111" height="22" />
+              <frame id="3008:9998" name="Icon/20/ArrowRight" x="117" y="9" width="16" height="16">
+                <instance id="3008:9999" name="ArrowRight" x="0" y="0" width="16" height="16" />
+              </frame>
+            </frame>
+            <instance id="3008:10000" name="Navigation item" x="0" y="50" width="114" height="34" />
+            <instance id="3008:10001" name="Navigation item" x="0" y="100" width="137" height="34" />
+            <instance id="3008:10002" name="Navigation item" x="0" y="150" width="242" height="34" />
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+</frame>
