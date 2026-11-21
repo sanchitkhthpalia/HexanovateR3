@@ -13,6 +13,8 @@ function read(name: string): string | undefined {
 export const env = {
   sheets: { url: read("SHEETS_WEBHOOK_URL"), secret: read("SHEETS_WEBHOOK_SECRET") },
   hubspot: { token: read("HUBSPOT_TOKEN") },
+  /** Optional; by default the booking-token key is derived from SHEETS_WEBHOOK_SECRET. */
+  booking: { secret: read("BOOKING_TOKEN_SECRET") },
   email: {
     user: read("GMAIL_USER"),
     appPassword: read("GMAIL_APP_PASSWORD"),

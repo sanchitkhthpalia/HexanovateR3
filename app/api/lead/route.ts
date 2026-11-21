@@ -1,9 +1,10 @@
 import { appendLeadRow, updateLeadStatuses } from "@/lib/server/sheets";
 import { upsertHubSpotContact } from "@/lib/server/hubspot";
 import { sendLeadEmail } from "@/lib/server/email";
-import { env } from "@/lib/server/env";
+import { issueBookingToken } from "@/lib/server/booking-token";
 import { NotConfigured, toLeadRecord, type IntegrationStatus } from "@/lib/server/lead-record";
 import { rateLimit } from "@/lib/server/rate-limit";
+import { clientIp, isAllowedOrigin, json } from "@/lib/server/request";
 import { leadSubmissionSchema } from "@/lib/validation/lead";
 
 // POST /api/lead
@@ -14,6 +15,7 @@ import { leadSubmissionSchema } from "@/lib/validation/lead";
 //  4. HubSpot upsert + email notification in parallel (Promise.allSettled)
 //  5. write crm/email status back to the Sheet row
 //  6. success if the lead landed anywhere (Sheet, CRM or inbox); otherwise a retryable error.
+//     A success carries a short-lived booking token for the calendar step (/api/slots, /api/book).
 // Provider errors are logged server-side (no PII) and never returned to the browser.
 
 // Runs on the Node.js runtime (the default for route handlers), which nodemailer needs.
@@ -24,13 +26,10 @@ const MAX_BODY_BYTES = 10_000;
 
 type ErrorCode = "forbidden" | "bad_request" | "too_large" | "rate_limited" | "too_fast" | "validation" | "unavailable";
 
-const json = (status: number, body: Record<string, unknown>, headers?: HeadersInit) =>
-  Response.json(body, { status, headers: { "Cache-Control": "no-store", ...headers } });
 const fail = (status: number, error: ErrorCode, extra: Record<string, unknown> = {}, headers?: HeadersInit) =>
   json(status, { ok: false, error, ...extra }, headers);
 
 export async function POST(request: Request) {
-  // Same-origin only: browsers always send Origin on a cross-site or fetch POST.
   if (!isAllowedOrigin(request)) return fail(403, "forbidden");
 
   const ip = clientIp(request);
@@ -88,7 +87,7 @@ export async function POST(request: Request) {
   // 6. Stored anywhere → success. The browser never sees which provider failed or why.
   const stored = [sheet, crm, email].some((r) => r.status === "ok");
   if (!stored) return fail(502, "unavailable");
-  return json(200, { ok: true });
+  return json(200, { ok: true, bookingToken: issueBookingToken(lead) });
 }
 
 /** Runs one integration, logging failures without personal data. */
@@ -103,18 +102,4 @@ async function settle<T>(name: string, task: Promise<T>): Promise<{ status: Inte
     console.error(`[lead] ${name} failed: ${error instanceof Error ? error.message : "unknown error"}`);
     return { status: "failed" };
   }
-}
-
-function isAllowedOrigin(request: Request): boolean {
-  const origin = request.headers.get("origin");
-  if (!origin) return false;
-  const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
-  const proto = request.headers.get("x-forwarded-proto") ?? (host?.startsWith("localhost") ? "http" : "https");
-  const self = host ? `${proto}://${host}` : null;
-  return origin === self || env.allowedOrigins.includes(origin);
-}
-
-function clientIp(request: Request): string {
-  // Vercel sets x-forwarded-for (client first) and x-real-ip.
-  return request.headers.get("x-forwarded-for")?.split(",")[0].trim() || request.headers.get("x-real-ip") || "unknown";
 }

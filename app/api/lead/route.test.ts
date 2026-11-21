@@ -52,7 +52,7 @@ describe("POST /api/lead — happy path", () => {
   it("stores in the Sheet, then CRM + email in parallel, then writes statuses back", async () => {
     const res = await post(valid());
     expect(res.status).toBe(200);
-    expect(await res.json()).toEqual({ ok: true });
+    expect(await res.json()).toEqual({ ok: true, bookingToken: null }); // no Sheet secret in tests → no booking
 
     const lead = appendLeadRow.mock.calls[0][0];
     expect(lead).toMatchObject({
@@ -67,6 +67,18 @@ describe("POST /api/lead — happy path", () => {
     expect(upsertHubSpotContact).toHaveBeenCalledWith(lead);
     expect(sendLeadEmail).toHaveBeenCalledWith(lead);
     expect(updateLeadStatuses).toHaveBeenCalledWith(lead.id, { crmStatus: "ok", emailStatus: "ok", crmContactId: "hs-123" });
+  });
+
+  it("returns a booking token for the calendar step when the script is configured", async () => {
+    const { env } = await import("@/lib/server/env");
+    const { verifyBookingToken } = await import("@/lib/server/booking-token");
+    env.sheets.secret = "test-shared-secret";
+    try {
+      const { bookingToken } = await (await post(valid())).json();
+      expect(verifyBookingToken(bookingToken)).toMatchObject({ name: "Priya Sharma", email: "priya@acme-logistics.in" });
+    } finally {
+      env.sheets.secret = undefined;
+    }
   });
 
   it("appends to the Sheet before calling CRM and email", async () => {

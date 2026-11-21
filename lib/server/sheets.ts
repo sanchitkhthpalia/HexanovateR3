@@ -11,7 +11,15 @@ interface ScriptResponse {
   error?: string;
 }
 
-async function call(payload: Record<string, unknown>): Promise<ScriptResponse> {
+/** The script answered with { ok: false, error: code }. */
+export class ScriptError extends Error {
+  constructor(readonly code: string) {
+    super(`sheets_${code}`);
+  }
+}
+
+/** Calls the Apps Script web app (also used for calendar actions, see calendar.ts). */
+export async function callScript<T extends ScriptResponse = ScriptResponse>(payload: Record<string, unknown>): Promise<T> {
   const { url, secret } = env.sheets;
   if (!url || !secret) throw new NotConfigured();
   const res = await fetchWithTimeout(url, {
@@ -21,13 +29,13 @@ async function call(payload: Record<string, unknown>): Promise<ScriptResponse> {
     redirect: "follow",
   });
   if (!res.ok) throw new Error(`sheets_http_${res.status}`);
-  const data = (await res.json().catch(() => null)) as ScriptResponse | null;
-  if (!data?.ok) throw new Error(`sheets_${data?.error ?? "bad_response"}`);
+  const data = (await res.json().catch(() => null)) as T | null;
+  if (!data?.ok) throw new ScriptError(data?.error ?? "bad_response");
   return data;
 }
 
 export async function appendLeadRow(lead: LeadRecord): Promise<void> {
-  await call({
+  await callScript({
     action: "append",
     lead: {
       id: lead.id,
@@ -51,5 +59,5 @@ export async function updateLeadStatuses(
   leadId: string,
   statuses: { crmStatus: IntegrationStatus; emailStatus: IntegrationStatus; crmContactId?: string },
 ): Promise<void> {
-  await call({ action: "update", id: leadId, ...statuses });
+  await callScript({ action: "update", id: leadId, ...statuses });
 }

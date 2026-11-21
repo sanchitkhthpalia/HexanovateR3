@@ -21,7 +21,7 @@ export interface RateLimitResult {
   retryAfter: number;
 }
 
-export function rateLimit(key: string, now = Date.now()): RateLimitResult {
+export function rateLimit(key: string, now = Date.now(), limit = LIMIT): RateLimitResult {
   let entry = hits.get(key);
   if (!entry || entry.resetAt <= now) {
     if (hits.size >= MAX_KEYS) prune(now);
@@ -29,7 +29,7 @@ export function rateLimit(key: string, now = Date.now()): RateLimitResult {
     hits.set(key, entry);
   }
   entry.count++;
-  return { allowed: entry.count <= LIMIT, retryAfter: Math.ceil((entry.resetAt - now) / 1000) };
+  return { allowed: entry.count <= limit, retryAfter: Math.ceil((entry.resetAt - now) / 1000) };
 }
 
 function prune(now: number) {

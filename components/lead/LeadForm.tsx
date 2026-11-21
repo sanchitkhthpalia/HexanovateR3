@@ -15,6 +15,7 @@ import {
   type LeadFormInput,
   type LeadFormValues,
 } from "@/lib/validation/lead";
+import BookingStep from "./BookingStep";
 import { Field, FormSelect, fieldBorder, fieldBox } from "./fields";
 import { PhoneField } from "./PhoneField";
 
@@ -43,6 +44,7 @@ export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [failure, setFailure] = useState<string>(FAILURE_MESSAGES.default);
   const [firstName, setFirstName] = useState("");
+  const [booking, setBooking] = useState<{ token: string; email: string } | null>(null);
   const honeypotRef = useRef<HTMLInputElement>(null);
   const renderedAt = useRef(0);
   const successRef = useRef<HTMLHeadingElement>(null);
@@ -86,12 +88,13 @@ export default function LeadForm() {
         body: JSON.stringify({ ...values, website: honeypotRef.current?.value ?? "", renderedAt: renderedAt.current }),
         signal: AbortSignal.timeout(15000),
       });
-      const data: { ok?: boolean; error?: string; fields?: Record<string, string> } | null = await response
+      const data: { ok?: boolean; error?: string; fields?: Record<string, string>; bookingToken?: string | null } | null = await response
         .json()
         .catch(() => null);
 
       if (response.ok && data?.ok) {
         setFirstName(values.name.split(/\s+/)[0]);
+        setBooking(data.bookingToken ? { token: data.bookingToken, email: values.email } : null);
         setStatus("success");
         return;
       }
@@ -116,14 +119,19 @@ export default function LeadForm() {
 
   if (status === "success") {
     return (
-      <div role="status" className="flex w-full max-w-[412px] flex-col items-end gap-3 text-right lg:w-[412px] lg:max-w-none">
-        <Image src="/icons/check-badge.svg" alt="" width={40} height={40} />
-        <h3 ref={successRef} tabIndex={-1} className="font-display text-[1.375rem] leading-8 font-semibold text-black outline-none">
-          Thanks{firstName ? `, ${firstName}` : ""}! We&apos;ve got your details.
-        </h3>
-        <p className="text-body text-ink-body">
-          Our team will reach out within one business day to set up your free live demo.
-        </p>
+      <div className="flex w-full max-w-[412px] flex-col gap-6 lg:w-[412px] lg:max-w-none">
+        <div role="status" className="flex flex-col items-end gap-3 text-right">
+          <Image src="/icons/check-badge.svg" alt="" width={40} height={40} />
+          <h3 ref={successRef} tabIndex={-1} className="font-display text-[1.375rem] leading-8 font-semibold text-black outline-none">
+            Thanks{firstName ? `, ${firstName}` : ""}! We&apos;ve got your details.
+          </h3>
+          <p className="text-body text-ink-body">
+            {booking
+              ? "Pick a time below for your free live demo, or we'll reach out within one business day."
+              : "Our team will reach out within one business day to set up your free live demo."}
+          </p>
+        </div>
+        {booking && <BookingStep token={booking.token} email={booking.email} />}
       </div>
     );
   }
