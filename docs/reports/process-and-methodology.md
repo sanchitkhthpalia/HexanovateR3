@@ -1,6 +1,6 @@
 # Process & Methodology: KlearStack landing page
 
-**Live:** [Vercel URL — to be added] · **Repo:** https://github.com/sanchitkhthpalia/HexanovateR3 · Supporting detail: `docs/assumptions.md`, `docs/roi-logic.md`, `docs/process-log.md`, `docs/integrations-setup.md`
+**Live:** https://hexanovate-chi.vercel.app/ · **Repo:** https://github.com/sanchitkhthpalia/HexanovateR3 · Supporting detail: `docs/assumptions.md`, `docs/roi-logic.md`, `docs/process-log.md`, `docs/integrations-setup.md`
 
 ## 1. Approach and how the time went
 I built in the brief's priority order. Before writing any UI, I locked down the two things that are pass/fail or hard to fake: the ROI maths and the design tokens. The commit history shows the order:

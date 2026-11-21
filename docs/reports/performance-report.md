@@ -1,34 +1,56 @@
 # Performance Report: KlearStack landing page
 
-**Measured URL:** [Vercel URL — to be added] · **Tool:** Lighthouse 13.6 (Chrome, default simulated throttling) · **Date:** 21 Nov 2026
-Mobile = Lighthouse default (Moto G Power emulation, slow 4G, 4× CPU slowdown). Desktop = `--preset=desktop`. Each mode was run 3 times; the median run is reported, and the screenshots are of that run.
+**Measured URL:** https://hexanovate-chi.vercel.app/ · **Tool:** Lighthouse 13.6 CLI in headless Chrome, default simulated throttling · **Date:** 21 Nov 2026
+Mobile = Lighthouse default (Moto G Power emulation, slow 4G, 4× CPU slowdown). Desktop = `--preset=desktop`. Each mode was run 3 times against the live URL, and the **median run** is reported. The screenshots are of that run.
 
 ## Results (deployed URL)
 
-| Metric | Target | Mobile | Desktop | Met? |
+| Metric | Target | Mobile (median) | Desktop (median) | Met? |
 |---|---|---|---|---|
-| Lighthouse Performance | 85+ (mobile) | ⏳ | ⏳ | ⏳ |
-| Accessibility / Best Practices / SEO | 90+ each | ⏳ | ⏳ | ⏳ |
-| Largest Contentful Paint | < 2.5 s | ⏳ | ⏳ | ⏳ |
-| Cumulative Layout Shift | < 0.1 | ⏳ | ⏳ | ⏳ |
-| Total Blocking Time | < 200 ms | ⏳ | ⏳ | ⏳ |
-| First Contentful Paint | < 1.8 s | ⏳ | ⏳ | ⏳ |
-| Time to First Byte | < 800 ms | ⏳ | ⏳ | ⏳ |
-| Total page weight | state & justify | ⏳ | ⏳ | — |
-| JS transferred | state & justify | ⏳ | ⏳ | — |
+| Lighthouse Performance | 85+ (mobile) | **98** | **100** | ✅ |
+| Accessibility / Best Practices / SEO | 90+ each | **100 / 100 / 100** | **100 / 100 / 100** | ✅ |
+| Largest Contentful Paint | < 2.5 s | **1.01 s** | **0.29 s** | ✅ |
+| Cumulative Layout Shift | < 0.1 | **0** | **0** | ✅ |
+| Total Blocking Time | < 200 ms | **162 ms** | **0 ms** | ✅ (see note) |
+| First Contentful Paint | < 1.8 s | **1.01 s** | **0.29 s** | ✅ |
+| Time to First Byte (root document) | < 800 ms | **25 ms** | **27 ms** | ✅ |
+| Total page weight (transferred) | state & justify | **569 KiB** | **571 KiB** | — |
+| JS transferred | state & justify | **269 KiB** (6 files) | **269 KiB** | — |
 
-Screenshots: `lighthouse-mobile.png`, `lighthouse-desktop.png` (attached).
+All six runs:
+
+| Run | Perf | A11y | BP | SEO | LCP | CLS | TBT | FCP | TTFB |
+|---|---|---|---|---|---|---|---|---|---|
+| Mobile 1 | 93 | 100 | 100 | 100 | 0.94 s | 0 | **313 ms** | 0.94 s | 25 ms |
+| Mobile 2 | 98 | 100 | 100 | 100 | 1.01 s | 0 | 155 ms | 1.01 s | 24 ms |
+| Mobile 3 (median) | 98 | 100 | 100 | 100 | 1.01 s | 0 | 162 ms | 1.01 s | 25 ms |
+| Desktop 1 | 100 | 100 | 100 | 100 | 0.28 s | 0 | 0 ms | 0.28 s | 28 ms |
+| Desktop 2 (median) | 100 | 100 | 100 | 100 | 0.29 s | 0 | 0 ms | 0.29 s | 27 ms |
+| Desktop 3 | 100 | 100 | 100 | 100 | 0.28 s | 0 | 0 ms | 0.28 s | 26 ms |
+
+**Note on TBT.**
+- **Mobile TBT is the one metric close to its limit.** The median is 162 ms against a 200 ms target, and the first run measured 313 ms, which **misses the target**.
+- **The cause is JavaScript start-up under the 4× CPU slowdown:** hydrating the interactive sections (header menus, form with zod and libphonenumber, calculator).
+- **The fix** is to defer the form and drawer code (see "What I'd optimise next").
+- **TTFB** is low because the page is statically prerendered and served from Vercel's CDN cache (`x-vercel-cache: HIT`).
+- **Caveat:** the numbers are from my own machine and network. Field data will vary.
+
+### Lighthouse: mobile (median run)
+![Lighthouse mobile](lighthouse-mobile.png)
+
+### Lighthouse: desktop (median run)
+![Lighthouse desktop](lighthouse-desktop.png)
 
 ## Page weight and JS: what's in it and why
-Measured on the production build (`next build && next start`); the deployed transfer sizes are in the table above.
+Transfer sizes from the median mobile run on the live URL:
 
 | Resource | Requests | Transferred | Notes |
 |---|---|---|---|
-| JavaScript | 6 | ~265 KiB (876 KiB uncompressed) | React 19 + Next runtime ~60%. The rest is Radix (menu, dialog, accordion, select), react-hook-form + zod, and libphonenumber-js (the *min* metadata build). |
-| Fonts | 7 | ~233 KiB | Inter (variable, normal + italic) and Be Vietnam Pro 400/500/600, Latin subset only, self-hosted by `next/font`. |
-| Images | 19 | ~53 KiB | All WebP at 2× display size, or inline SVG. |
-| HTML + CSS | 2 | ~31 KiB | Static prerendered HTML; one Tailwind CSS file. |
-| **Total** | 35 | **~582 KiB** | No third-party requests at all. |
+| JavaScript | 6 | 269 KiB | React 19 and the Next.js runtime, Radix (menu, dialog, accordion, select), react-hook-form + zod, and libphonenumber-js (the *min* metadata build). |
+| Fonts | 7 | 229 KiB | Inter (variable, normal + italic) and Be Vietnam Pro 400/500/600, Latin subset only, self-hosted by `next/font`. |
+| Images | 19 | 41 KiB | All WebP at 2× display size, or SVG. |
+| HTML + CSS | 2 | 30 KiB | Static prerendered HTML; one Tailwind CSS file. |
+| **Total** | 35 | **569 KiB** | No third-party requests at all. |
 
 **Why this JS is justified:**
 - Every library maps to a brief requirement:
@@ -68,7 +90,7 @@ Measured on the production build (`next build && next start`); the deployed tran
 - **Localhost baseline** (production build, same Lighthouse settings; *not* the reported figures):
   - Mobile: Performance 99–100, A11y 100, Best Practices 96 → 100 after the CSP fix below, SEO 100. LCP 0.9 s, CLS 0, TBT 90 ms, FCP 0.9 s.
   - Desktop: 100 across the board.
-- **One outlier.** The very first mobile run after a server restart scored 69, with a single 3.1 s "unattributable" task. The raw trace showed only ~320 ms of real main-thread work, and the next runs scored 99–100. That's why I report the median of three runs, not a single run.
+- **One outlier (localhost).** The very first local mobile run after a server restart scored 69, with a single 3.1 s "unattributable" task. The raw trace showed only ~320 ms of real main-thread work, and the next runs scored 99–100. That's why I report the median of three runs, not a single run.
 - **Best Practices fix.** The first run flagged a console CSP violation: zod's `new Function` probe. I turned it off with `z.config({ jitless: true })`.
 
 ## What I'd optimise next
