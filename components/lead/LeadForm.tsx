@@ -32,8 +32,16 @@ const DOCUMENT_SHORT = ["< 1K / month", "1K – 10K / month", "10K – 50K / mon
 const DOCUMENT_OPTIONS = DOCUMENT_VOLUMES.map((v, i) => ({ value: v, label: v, display: DOCUMENT_SHORT[i] }));
 const COUNTER_FROM = 800;
 
+// What to tell the person for each server error code (never the provider's own error).
+const FAILURE_MESSAGES = {
+  default: "Nothing you typed has been lost. Please check your connection and try again.",
+  rate_limited: "Too many attempts from your network. Please wait a few minutes and try again.",
+  too_fast: "That was quick! Please wait a moment and try again.",
+} as const;
+
 export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
+  const [failure, setFailure] = useState<string>(FAILURE_MESSAGES.default);
   const [firstName, setFirstName] = useState("");
   const honeypotRef = useRef<HTMLInputElement>(null);
   const renderedAt = useRef(0);
@@ -78,7 +86,9 @@ export default function LeadForm() {
         body: JSON.stringify({ ...values, website: honeypotRef.current?.value ?? "", renderedAt: renderedAt.current }),
         signal: AbortSignal.timeout(15000),
       });
-      const data: { ok?: boolean; fields?: Record<string, string> } | null = await response.json().catch(() => null);
+      const data: { ok?: boolean; error?: string; fields?: Record<string, string> } | null = await response
+        .json()
+        .catch(() => null);
 
       if (response.ok && data?.ok) {
         setFirstName(values.name.split(/\s+/)[0]);
@@ -93,8 +103,10 @@ export default function LeadForm() {
         setStatus("idle");
         return;
       }
+      setFailure(FAILURE_MESSAGES[data?.error as keyof typeof FAILURE_MESSAGES] ?? FAILURE_MESSAGES.default);
       setStatus("error");
     } catch {
+      setFailure(FAILURE_MESSAGES.default);
       setStatus("error");
     }
   }
@@ -255,7 +267,7 @@ export default function LeadForm() {
         {status === "error" && (
           <div role="alert" className="flex flex-col items-end gap-1 text-right text-[0.875rem] leading-5 text-danger">
             <p className="font-semibold">We couldn&apos;t send your details.</p>
-            <p>Nothing you typed has been lost. Please check your connection and try again.</p>
+            <p>{failure}</p>
           </div>
         )}
 
