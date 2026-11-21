@@ -26,22 +26,27 @@ export default function Header() {
           aria-label="KlearStack home"
           className="flex h-12 w-[142px] shrink-0 items-center justify-center rounded-[26px] bg-white"
         >
-          <Logo size="sm" />
+          {/* Above the fold on every page view: preload instead of lazy-loading. */}
+          <Logo size="sm" priority />
         </a>
 
         <DesktopNav className="ml-[62px] hidden desk:block" />
 
         <div className="ml-auto hidden items-center gap-3 desk:flex">
-          <ButtonLink href="#demo" variant="outline">
+          <ButtonLink href="#demo" variant="outline" eagerIcon>
             Try it for Free
           </ButtonLink>
-          <ButtonLink href="#demo">Get Free Demo</ButtonLink>
+          <ButtonLink href="#demo" eagerIcon>
+            Get Free Demo
+          </ButtonLink>
         </div>
 
         <div className="ml-auto flex items-center gap-2 desk:hidden">
           {/* Wrapped: ButtonLink's own inline-flex would override a `hidden` class on it. */}
           <div className="hidden sm:block">
-            <ButtonLink href="#demo">Get Free Demo</ButtonLink>
+            <ButtonLink href="#demo" eagerIcon>
+              Get Free Demo
+            </ButtonLink>
           </div>
           <MobileNav />
         </div>

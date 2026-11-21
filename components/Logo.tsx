@@ -7,12 +7,12 @@ const sizes = {
   md: { mark: 28, markPad: "px-2 pt-[7px] pb-[9px]", text: "text-[1.625rem] leading-7" }, // design: "Monogram wrapper" + 26/28 text
 };
 
-export default function Logo({ size = "md" }: { size?: keyof typeof sizes }) {
+export default function Logo({ size = "md", priority = false }: { size?: keyof typeof sizes; priority?: boolean }) {
   const s = sizes[size];
   return (
     <span className="inline-flex items-center gap-1.5">
       <span className={`flex items-center justify-center ${s.markPad}`}>
-        <Image src="/images/klearstack-monogram.svg" alt="" width={s.mark} height={s.mark} />
+        <Image src="/images/klearstack-monogram.svg" alt="" width={s.mark} height={s.mark} priority={priority} />
       </span>
       <span className={`text-wordmark whitespace-nowrap ${s.text}`}>
         <span className="font-bold">Klear</span>

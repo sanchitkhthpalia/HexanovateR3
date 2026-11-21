@@ -28,17 +28,17 @@ export default function RangeSlider({ id, label, value, min, max, step, onChange
 
   return (
     <div>
-      <label htmlFor={id} className="flex items-center gap-1.5 text-[0.6875rem] leading-4 font-bold tracking-[0.06em] text-roi-subtle uppercase">
+      <label htmlFor={id} className="flex items-center gap-1.5 text-[0.6875rem] leading-4 font-bold tracking-[0.06em] text-roi-muted uppercase">
         {label}
       </label>
       <div className="relative mt-1 h-[51px]">
         <span
           aria-hidden
-          className="absolute top-0 -translate-x-1/2 rounded-full bg-roi-blue px-3 py-1 text-[0.6875rem] leading-[15px] font-bold whitespace-nowrap text-white shadow-[0_2px_6px_rgb(62_147_252/0.35)]"
+          className="absolute top-0 -translate-x-1/2 rounded-full bg-brand-500 px-3 py-1 text-[0.6875rem] leading-[15px] font-bold whitespace-nowrap text-white shadow-[0_2px_6px_rgb(24_115_222/0.35)]"
           style={{ left: bubbleLeft }}
         >
           {valueText}
-          <span className="absolute top-full left-1/2 -translate-x-1/2 border-x-[5px] border-t-[5px] border-x-transparent border-t-roi-blue" />
+          <span className="absolute top-full left-1/2 -translate-x-1/2 border-x-[5px] border-t-[5px] border-x-transparent border-t-brand-500" />
         </span>
         <input
           id={id}

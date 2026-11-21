@@ -57,7 +57,7 @@ export default function MobileNav() {
             <Accordion.Root type="single" collapsible defaultValue={ACTIVE.item}>
               {NAV_ITEMS.map((item) => {
                 const isActive = item.id === ACTIVE.item;
-                const rowText = isActive ? "font-semibold text-accent-500" : "font-medium text-black";
+                const rowText = isActive ? "font-semibold text-accent-text" : "font-medium text-black";
 
                 if (item.kind === "link") {
                   return (

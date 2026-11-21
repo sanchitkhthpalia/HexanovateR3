@@ -15,8 +15,8 @@ const SCROLL_CLOSE_THRESHOLD_PX = 8;
 
 const itemText =
   "group/trigger relative flex items-center gap-1 rounded-field text-nav whitespace-nowrap transition-colors duration-150";
-const inactiveText = "text-black hover:text-brand-500 data-[state=open]:text-brand-500";
-const activeText = "font-semibold text-accent-500";
+const inactiveText = "text-black hover:text-brand-700 data-[state=open]:text-brand-700";
+const activeText = "font-semibold text-accent-text"; // design #D99723 darkened for contrast (assumptions Q7)
 // Hover underline grows from the centre; the active item has the blue bar instead.
 const hoverUnderline =
   "after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-center after:scale-x-0 after:bg-current " +

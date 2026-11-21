@@ -14,7 +14,8 @@ export default function Home() {
         Skip to content
       </a>
       <Header />
-      <main id="main" className="flex flex-col gap-30 pb-30">
+      {/* 120px between header and first section, the same rhythm as between sections (assumptions R6). */}
+      <main id="main" className="flex flex-col gap-20 pt-16 pb-20 sm:gap-30 sm:pt-30 sm:pb-30">
         <IntegrationsBanner />
         <RoiCalculator />
         <LeadSection />

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Logo from "@/components/Logo";
+import DeadLink from "@/components/ui/DeadLink";
 import LeadForm from "./LeadForm";
 import LogoMarquee from "./LogoMarquee";
 
@@ -42,7 +43,7 @@ export default function LeadSection() {
                     460px box, so the heading borrows 20px of the panel's right padding to keep the design's 3-line break. */}
                 <h1
                   id="lead-title"
-                  className="font-display text-[1.75rem] leading-[2.375rem] font-semibold tracking-[-0.01em] text-black sm:text-[2rem] sm:leading-[2.75rem] lg:-mr-5 lg:text-display-lg"
+                  className="font-display text-[1.75rem] leading-[2.375rem] font-semibold tracking-[-0.01em] text-black sm:text-[2rem] sm:leading-[2.75rem] lg:-mr-5 lg:text-display-lg lg:leading-[3.375rem]"
                 >
                   The Only Document AI With Fraud, Compliance, &amp; Audit Checks Built In
                 </h1>
@@ -95,9 +96,7 @@ export default function LeadSection() {
               {/* Not in the design: consent/privacy line required for collecting PII (assumptions L9). */}
               <p className="-mt-2 text-right text-xs leading-5 text-ink-muted">
                 By submitting, you agree to our{" "}
-                <a href="#" className="text-brand-500 underline-offset-2 hover:underline">
-                  Privacy Policy
-                </a>
+                <DeadLink className="text-brand-700 underline underline-offset-2 hover:text-black">Privacy Policy</DeadLink>
                 .
               </p>
             </div>

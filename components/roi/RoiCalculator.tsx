@@ -68,7 +68,7 @@ export default function RoiCalculator() {
           <label
             id="roi-doc-label"
             htmlFor="roi-doc-type"
-            className="block text-[0.6875rem] leading-4 font-bold tracking-[0.06em] text-roi-subtle uppercase"
+            className="block text-[0.6875rem] leading-4 font-bold tracking-[0.06em] text-roi-muted uppercase"
           >
             Document Type
           </label>
@@ -163,13 +163,13 @@ export default function RoiCalculator() {
           {announced}
         </p>
 
-        <p className="mt-[13px] text-center text-[0.625rem] font-semibold text-roi-subtle">
+        <p className="mt-[13px] text-center text-[0.625rem] font-semibold text-roi-muted">
           * 15% lesser price in the Annual Plan
         </p>
 
         {out && (
           <details className="group mx-auto mt-3 max-w-md text-[0.8125rem] text-roi-muted">
-            <summary className="mx-auto w-fit cursor-pointer list-none rounded px-2 text-center font-semibold text-roi-blue underline-offset-2 hover:underline">
+            <summary className="mx-auto w-fit cursor-pointer list-none rounded px-2 text-center font-semibold text-brand-700 underline-offset-2 hover:underline">
               View calculation details
             </summary>
             <dl className="mt-3 grid grid-cols-[1fr_auto] gap-x-6 gap-y-1.5 rounded-xl border border-roi-card-line bg-white p-4">
@@ -202,7 +202,10 @@ function notReadyMessage(status: string, documentType: DocumentType) {
   return "Complete all inputs to see your savings.";
 }
 
-const TONES = { blue: "text-roi-blue", ink: "text-roi-ink", muted: "text-roi-muted" } as const;
+// Labels: the design's #3E93FC is 3.1:1 at 11px, so the blue label uses brand-500 (4.6:1); the 26px
+// value keeps #3E93FC (large text needs 3:1). Captions use slate-500 instead of the design's
+// #94A3B8 (2.6:1) — assumptions Q7.
+const TONES = { blue: "text-brand-500", ink: "text-roi-ink", muted: "text-roi-muted" } as const;
 
 // Result card (ROI raster): 114px tall, centred label / value / caption. The first card's label and
 // value are blue, the second's label dark, the third's label slate; values are dark unless blue.
@@ -219,12 +222,12 @@ function ResultCard({
   tone: keyof typeof TONES;
   negative?: boolean;
 }) {
-  const valueTone = negative ? "text-danger" : tone === "blue" ? TONES.blue : TONES.ink;
+  const valueTone = negative ? "text-danger" : tone === "blue" ? "text-roi-blue" : TONES.ink;
   return (
     <div className="flex min-h-[114px] flex-col items-center justify-center rounded-2xl border border-roi-card-line bg-white px-3 py-4 text-center shadow-[0_1px_2px_rgb(15_23_42/0.04)]">
       <p className={`text-[0.6875rem] leading-4 font-bold tracking-[0.06em] uppercase ${TONES[tone]}`}>{label}</p>
       <p className={`mt-2.5 font-display text-[1.625rem] leading-8 font-bold tabular-nums ${valueTone}`}>{value}</p>
-      <p className="mt-2 text-[0.625rem] leading-[14px] font-semibold tracking-[0.04em] text-roi-subtle uppercase">{caption}</p>
+      <p className="mt-2 text-[0.625rem] leading-[14px] font-semibold tracking-[0.04em] text-roi-muted uppercase">{caption}</p>
     </div>
   );
 }

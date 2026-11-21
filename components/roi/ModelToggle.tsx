@@ -40,8 +40,8 @@ export default function ModelToggle({ value, onChange }: { value: Model; onChang
             onKeyDown={(e) => onKeyDown(e, index)}
             className={`rounded-md px-3 text-[0.6875rem] font-bold whitespace-nowrap transition-[background-color,color,box-shadow] duration-200 ${
               checked
-                ? "bg-roi-blue text-white shadow-[0_2px_6px_rgb(62_147_252/0.4)]"
-                : "text-roi-muted hover:text-roi-ink"
+                ? "bg-brand-500 text-white shadow-[0_2px_6px_rgb(24_115_222/0.4)]"
+                : "text-[#5b6b80] hover:text-roi-ink"
             }`}
           >
             {option.label}

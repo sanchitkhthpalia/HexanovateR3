@@ -23,7 +23,8 @@ export function ctaClasses(variant: CtaVariant = "brand") {
   return `${base} ${variants[variant]}`;
 }
 
-export function CtaArrow({ variant = "brand" }: { variant?: CtaVariant }) {
+export function CtaArrow({ variant = "brand", eager = false }: { variant?: CtaVariant; eager?: boolean }) {
+  const loading = eager ? "eager" : "lazy";
   return variant === "brand" ? (
     <Image
       src="/icons/arrow-forward-white.webp"
@@ -31,6 +32,7 @@ export function CtaArrow({ variant = "brand" }: { variant?: CtaVariant }) {
       width={16}
       height={16}
       unoptimized
+      loading={loading}
       className="transition-transform duration-200 group-hover/cta:translate-x-1"
     />
   ) : (
@@ -39,6 +41,7 @@ export function CtaArrow({ variant = "brand" }: { variant?: CtaVariant }) {
       alt=""
       width={20}
       height={20}
+      loading={loading}
       className="transition-transform duration-200 group-hover/cta:translate-x-1"
     />
   );
@@ -47,13 +50,15 @@ export function CtaArrow({ variant = "brand" }: { variant?: CtaVariant }) {
 interface ButtonLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   variant?: CtaVariant;
+  /** Load the arrow eagerly (above-the-fold buttons). */
+  eagerIcon?: boolean;
 }
 
-export default function ButtonLink({ variant = "brand", className = "", children, ...props }: ButtonLinkProps) {
+export default function ButtonLink({ variant = "brand", eagerIcon = false, className = "", children, ...props }: ButtonLinkProps) {
   return (
     <a className={`${ctaClasses(variant)} ${className}`} {...props}>
       {children}
-      <CtaArrow variant={variant} />
+      <CtaArrow variant={variant} eager={eagerIcon} />
     </a>
   );
 }
