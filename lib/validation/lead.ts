@@ -5,6 +5,11 @@ import { getCountries, isValidPhoneNumber, type CountryCode } from "libphonenumb
 import { z } from "zod";
 import { isFreeEmailDomain } from "./free-email-domains";
 
+// zod probes `new Function("")` to decide whether to JIT-compile object parsers. The page's CSP
+// blocks eval, so the probe shows up as a CSP violation in the console. These schemas are tiny,
+// so skip the JIT.
+z.config({ jitless: true });
+
 export const SOLUTIONS = [
   "Accounts Payable",
   "Supply Chain",
