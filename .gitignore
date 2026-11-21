@@ -35,3 +35,6 @@ __pycache__/
 # Hexanovate's assignment documents (third-party; kept local, not published)
 docs/Hexanovate_Round2*.pdf
 docs/ROI Calculator_MarTech Technical_Round 2.xlsx
+
+# PDFs exported for the submission email (source is docs/reports/*.md)
+submission/
