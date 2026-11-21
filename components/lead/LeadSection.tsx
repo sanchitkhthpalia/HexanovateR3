@@ -1,6 +1,22 @@
 import Image from "next/image";
 import Logo from "@/components/Logo";
+import LeadForm from "./LeadForm";
 import LogoMarquee from "./LogoMarquee";
+
+// Rating badge (Figma 3009:10127 / 3009:10147): stars over the score, 36px round logo on the right.
+// Figma builds this as a 180°-rotated group, so the exported star strip is upside down; rotating it
+// back puts the partial star at the end, as the design shows.
+function Rating({ badge, score, stars, label }: { badge: string; score: string; stars: string; label: string }) {
+  return (
+    <div className="flex items-center gap-3" role="img" aria-label={label}>
+      <div className="flex flex-col items-end gap-1">
+        <Image src={stars} alt="" width={82} height={15} className="rotate-180" />
+        <span className="text-[0.875rem] leading-5 text-black">{score}</span>
+      </div>
+      <Image src={badge} alt="" width={36} height={36} unoptimized className="rounded-full" />
+    </div>
+  );
+}
 
 // Lead generation section, Figma 3009:10045 ("Lead Generation Form 2 folds"): a 1008×656 card,
 // left panel 598px (title, subtitle, trust signals, logo marquee) and the form panel on the right.
@@ -52,13 +68,40 @@ export default function LeadSection() {
           <LogoMarquee />
         </div>
 
-        {/* Right panel — form arrives in the next step. */}
-        <div className="flex flex-1 flex-col items-end gap-7 border-panel-border bg-panel px-6 py-7 sm:px-[31px] lg:rounded-r-card lg:border-y lg:border-r">
+        {/* Right panel (Figma 3009:10092) */}
+        <div className="flex min-w-0 flex-1 flex-col items-end justify-center gap-7 border-panel-border bg-panel px-6 py-7 sm:px-[31px] lg:rounded-r-card lg:border-y lg:border-r">
           <p className="w-full text-right font-display text-tagline font-medium text-black">
             Bring your messiest documents.
             <br />
             We&apos;ll process them live.
           </p>
+
+          <div className="flex w-full flex-col items-end gap-6">
+            <LeadForm />
+
+            <div className="flex flex-wrap items-center justify-end gap-x-8 gap-y-3">
+              <Rating badge="/images/badge-g2.webp" score="4.9/5 G2" stars="/images/stars-g2.svg" label="Rated 4.9 out of 5 on G2" />
+              <Rating
+                badge="/images/badge-trustpilot.webp"
+                score="4.7/5 Trustpilot"
+                stars="/images/stars-trustpilot.svg"
+                label="Rated 4.7 out of 5 on Trustpilot"
+              />
+            </div>
+
+            <div className="flex w-full flex-col gap-4">
+              <Image src="/images/divider-form.svg" alt="" width={349} height={1} className="h-px w-full" />
+              <p className="text-right text-note font-light text-black italic">All your data is safe and secure with us!</p>
+              {/* Not in the design: consent/privacy line required for collecting PII (assumptions L9). */}
+              <p className="-mt-2 text-right text-xs leading-5 text-ink-muted">
+                By submitting, you agree to our{" "}
+                <a href="#" className="text-brand-500 underline-offset-2 hover:underline">
+                  Privacy Policy
+                </a>
+                .
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -40,19 +40,22 @@ The brief says: *"Everything not specified in this document or the Figma file is
 
 | # | Ambiguity | Decision |
 |---|---|---|
-| L1 | Options for "Solution Required". | Accounts Payable, Supply Chain, Consumer Loans, ID Card (the footer's Solutions list), plus Document Processing and Other. |
-| L2 | Options for "No. of Documents". | Monthly ranges: < 1,000; 1,000–10,000; 10,000–50,000; 50,000–1,00,000; > 1,00,000. |
-| L3 | Dropdown control. | Custom listbox styled like the design, not a native `<select>`. Fully keyboard-operable (Radix Select). |
-| L4 | No country-code control on "Contact no.". | Compact country-code picker inside the field's left edge, default **+91**. Validate per country with libphonenumber-js and store as E.164. |
+| L1 | Options for "Solution Required". | ✅ Accounts Payable, Supply Chain, Consumer Loans, ID Card (the footer's Solutions list), plus Document Processing and Other. |
+| L2 | Options for "No. of Documents". | ✅ Monthly ranges: < 1,000; 1,000–10,000; 10,000–50,000; 50,000–1,00,000; > 1,00,000. The list shows full labels; the closed control shows a short form ("50K – 1L / month") so it fits the designed width. |
+| L3 | Dropdown control. | ✅ Radix Select styled like the design (blue caret, panel styled like the menus). Keyboard: Enter/Space/arrows open, typeahead, Escape. Its required-field error appears when the list closes without a choice, not when it opens. |
+| L4 | No country-code control on "Contact no.". | ✅ Country-code picker inside the field's left edge, default **+91**. India, US, UK, UAE, Singapore and Australia are listed first, then all countries A–Z, with typeahead by name. The number is validated for the chosen country with libphonenumber-js (default "min" metadata: checks length and leading digits per country, kept small for the client bundle). A number typed with `+` is validated as international. Conversion to E.164 happens server-side with the CRM integration. |
 | L5 | Name rules. | Required. 2–80 characters. Letters, spaces, `.`, `'` and `-` only. Trimmed. |
 | L6 | Business email rule. | Valid syntax, plus rejection of a free/public domain list: gmail, googlemail, yahoo.*, ymail, outlook, hotmail, live, msn, icloud, me, mac, aol, proton(mail), pm.me, gmx, mail.com, yandex, zoho mail, rediffmail, qq, 163, tutanota, fastmail and similar. Error: *"Please use your work email — personal addresses like gmail.com aren't accepted."* The same list runs on the server. |
 | L7 | Pain point field. | Optional, maximum 1,000 characters, with a live counter after 800. |
-| L8 | When validation shows. | On blur for each field, then on submit for all. The submit button stays enabled but blocks submission and focuses the first invalid field. This is more accessible than a disabled button, and the brief allows "disabled or blocked". |
-| L9 | No consent or privacy note in the design. | Add one small line under the button: *"By submitting, you agree to be contacted about KlearStack. See our Privacy Policy."* Required for PII handling. |
+| L8 | When validation shows. | ✅ react-hook-form `onTouched`: each field is validated when it first loses focus, then live as it's edited, so errors clear the moment they're fixed. Submit re-validates everything and focuses the first problem. The button is **`aria-disabled`** (dimmed, announced as unavailable) until the form is valid. It's not natively disabled, so clicking or pressing it still reveals every missing field instead of doing nothing. During submission it is truly disabled with a spinner, and the fields are locked. |
+| L9 | No consent or privacy note in the design. | ✅ One small line under the data note: *"By submitting, you agree to our Privacy Policy."* Required for PII handling. |
 | L10 | Spam protection. | A hidden honeypot field, plus a minimum fill time (3s, from a timestamp signed by the server), plus per-IP rate limiting (5 per 10 minutes). Rate limiting uses Upstash if configured, otherwise an in-memory fallback, documented as best-effort on serverless. |
-| L11 | Success and failure states. | On success the form panel is replaced by a confirmation, then the calendar step. On failure there's an inline error banner with Retry, the user's input is kept, and a `mailto:` fallback is offered. |
+| L11 | Success and failure states. | ✅ Success: the form is replaced by a confirmation that takes focus and is announced (calendar step comes with P2). Failure (network error, timeout after 15s, or non-2xx): an inline `role=alert` message, all input kept, and the button becomes "Try again". A 400 from the server's own validation is shown against the relevant fields. No mailto fallback, since the design only has placeholder addresses. |
 | L12 | Logo marquee content. | ✅ The design's own 7-logo sequence (Landmark, Network International, Elevation 10K ×2 each, Konica Minolta), so one copy (968px) is wider than the strip at every breakpoint. Pure CSS, rendered twice, the track slides −50%. Pauses on hover. Under reduced motion: no animation, the duplicate is hidden, and the strip scrolls horizontally instead. Below 640px the label sits above the logos. |
-| L13 | Ratings badges (G2 4.9, Trustpilot 4.7). | Static content, not linked. |
+| L13 | Ratings badges (G2 4.9, Trustpilot 4.7). | ✅ Static content, not linked. Each is announced as one image ("Rated 4.9 out of 5 on G2"). |
+| L14 | The form is wider (412px) than its panel (348px content) in Figma. | ✅ Reproduced on desktop: it overhangs the left panel by ~33px, and the gradient "folds" under each field fill the overhang. When stacked, the form is full-width and the folds are hidden. |
+| L15 | Input text is 14–15px in the design. | ✅ Kept from 640px up. Below that, 16px, to stop iOS Safari zooming on focus. |
+| L16 | Honeypot and timing. | ✅ Hidden `website` field (off-screen, `tabindex=-1`, `aria-hidden`, autocomplete off) plus the render time (set after hydration, since the page is prerendered). Both are sent with every submission. The stub API already answers honeypot hits with a bland success. Rejecting fast submissions and rate limiting arrive with the real `/api/lead`. |
 
 ## Integrations
 

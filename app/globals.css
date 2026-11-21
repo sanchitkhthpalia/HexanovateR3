@@ -33,6 +33,8 @@
   --color-ink-muted: #626262;
   --color-ink-menu: #48586a;
   --color-g2: #fe492c;
+  --color-danger: #c42b1c; /* form errors — not in the design; 5.6:1 on white */
+  --color-success: #1e7d4f;
 
   /* Fonts (loaded with next/font in app/layout.tsx) */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
