@@ -8,7 +8,7 @@ import { SelectContent, SelectItem } from "@/components/ui/select";
 import { fieldBorder, fieldBox } from "./fields";
 
 // "Contact no.*" with a country-code picker inside the field's left edge (the design has a plain
-// field; the brief requires country-code handling — assumptions L4). Default +91.
+// field; the brief requires country-code handling, assumptions L4). Default +91.
 
 const PREFERRED: CountryCode[] = ["IN", "US", "GB", "AE", "SG", "AU"];
 const regionName = new Intl.DisplayNames(["en"], { type: "region" });

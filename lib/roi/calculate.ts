@@ -1,13 +1,11 @@
 /**
- * ROI calculator — a line-by-line port of "ROI Calculator_MarTech Technical_Round 2.xlsx".
- * See docs/roi-logic.md for the cell-by-cell mapping. Cell references in comments
- * point at the "ROI Calculator" sheet unless prefixed with "Logic!".
+ * ROI calculator: a line-by-line port of the ROI sheet (cell mapping in docs/roi-logic.md).
+ * Cell references point at the "ROI Calculator" tab unless they start with "Logic!".
  *
- * Arithmetic is done in the same order as the sheet's formulas so results are
- * bit-for-bit identical doubles. The only rounding in the sheet's formulas is
- * ROUNDUP (Equivalent Resources) and ROUND (Payback Months); everything else
- * (₹ symbol, grouping, 2 decimals) is display formatting and belongs in the UI.
- * The 15% annual-plan discount is deliberately NOT applied, matching the sheet.
+ * The arithmetic runs in the same order as the sheet's formulas, so the results are the same
+ * doubles. The sheet only rounds in two places, ROUNDUP (Equivalent Resources) and ROUND
+ * (Payback Months); ₹, grouping and decimals are display formatting (format.ts).
+ * The 15% annual-plan discount isn't applied, same as the sheet.
  */
 
 export const DOCUMENT_TYPES = [
@@ -28,7 +26,7 @@ export type DocumentType = (typeof DOCUMENT_TYPES)[number];
 export type Model = "Single" | "Multi";
 export type Tier = "tier1" | "tier2" | "tier3";
 
-/** Logic!A2:B12 — document type → tier. */
+/** Logic!A2:B12: document type → tier. */
 export const DOCUMENT_TIERS: Record<DocumentType, Tier> = {
   "Bank Cheques": "tier1",
   "Bank Documents": "tier1",
@@ -51,7 +49,7 @@ export interface PricingPlan {
   rates: BandRates;
 }
 
-/** Logic!E2:K6 — pricing key ("tier|model") → fixed annual cost and band rates. No tier3|multi row exists. */
+/** Logic!E2:K6: pricing key ("tier|model") → fixed annual cost and band rates. No tier3|multi row exists. */
 export const PRICING: Readonly<Record<string, PricingPlan>> = {
   "tier1|single": { fixedAnnualCost: 25000, rates: [0.07, 0.06, 0.05, 0.04, 0.03] },
   "tier1|multi": { fixedAnnualCost: 18000, rates: [0.05, 0.04, 0.03, 0.02, 0.01] },
@@ -60,13 +58,13 @@ export const PRICING: Readonly<Record<string, PricingPlan>> = {
   "tier3|single": { fixedAnnualCost: 54000, rates: [0.15, 0.14, 0.13, 0.12, 0.11] },
 };
 
-/** Logic!N2 — used as a literal 30000 in B12. */
+/** Logic!N2, used as a literal 30000 in B12. */
 export const PAGES_PER_RESOURCE = 30000;
 
 /** Band edges used in B14. Pages up to the first edge are covered by the fixed annual cost (Logic!N5). */
 export const BAND_EDGES = [36000, 120000, 300000, 500000, 1000000] as const;
 
-/** Data validation on B8 — the only volumes the sheet accepts. */
+/** Data validation on B8: the only volumes the sheet accepts. */
 export const VOLUME_STEPS = [
   3000, 6000, 10000, 20000, 36000, 60000, 90000, 120000, 200000, 300000, 500000, 750000, 1000000,
 ] as const;
@@ -114,7 +112,7 @@ export interface RoiResult {
   status: RoiStatus;
   /** B10, verbatim. */
   message: (typeof STATUS_MESSAGES)[RoiStatus];
-  /** E6 — null where the sheet shows "". */
+  /** E6, null where the sheet shows "". */
   tier: Tier | null;
   /** E7 */
   pricingKey: string;
@@ -122,7 +120,7 @@ export interface RoiResult {
   fixedAnnualCost: number;
   /** E9:E13 */
   rates: BandRates;
-  /** B12:B19 — null where the sheet shows "" (status is not Ready). */
+  /** B12:B19, null where the sheet shows "" (status not Ready). */
   outputs: RoiOutputs | null;
 }
 
@@ -132,7 +130,7 @@ export function calculateRoi(input: RoiInput): RoiResult {
   const { model, annualVolume: volume, monthlySalary: salary } = input;
   const documentType = input.documentType as string;
 
-  // E6: IFERROR(VLOOKUP(B6, Logic!A2:C12, 2, FALSE), "") — VLOOKUP matches case-insensitively.
+  // E6: IFERROR(VLOOKUP(B6, Logic!A2:C12, 2, FALSE), ""). VLOOKUP ignores case.
   const tier = lookupTier(documentType);
   // E7: E6 & "|" & LOWER(B7)
   const pricingKey = `${tier ?? ""}|${model.toLowerCase()}`;

@@ -4,7 +4,7 @@ import DeadLink from "@/components/ui/DeadLink";
 import NewsletterForm from "./NewsletterForm";
 
 // Footer, Figma 3008:9718: full-bleed, top radii 40, sky gradient, 1008px content. Desktop layout
-// is as designed (right-aligned link columns); smaller screens stack — docs/assumptions.md F5.
+// is as designed (right-aligned link columns); smaller screens stack (assumptions F5).
 // Links go nowhere (single page), so they keep link semantics but don't jump.
 
 const link = (label: string) => ({ label, href: "#" });

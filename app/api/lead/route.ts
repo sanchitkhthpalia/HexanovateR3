@@ -11,7 +11,7 @@ import { leadSubmissionSchema } from "@/lib/validation/lead";
 //  1. guards: POST only (other methods → 405, as only POST is exported), same-origin, body size,
 //     per-IP rate limit, honeypot, minimum 3s between render and submit
 //  2. re-validate with the shared zod schema (same rules as the browser)
-//  3. append to the Google Sheet first — the record of every lead
+//  3. append to the Google Sheet first (the record of every lead)
 //  4. HubSpot upsert + email notification in parallel (Promise.allSettled)
 //  5. write crm/email status back to the Sheet row
 //  6. success if the lead landed anywhere (Sheet, CRM or inbox); otherwise a retryable error.

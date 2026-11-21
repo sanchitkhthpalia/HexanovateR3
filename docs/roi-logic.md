@@ -9,7 +9,7 @@ Every lookup formula references **`'Logic & Pricing'!`**, but the second tab is 
 
 We implement what the formulas clearly intend: the lookup resolves against the pricing tab. To produce expected test values, `scripts/roi/generate_fixtures.py` renames the tab to `Logic & Pricing` in a temporary copy (no formula is altered) and evaluates the sheet with the `formulas` engine. The live Google Sheet linked in the brief should be checked to confirm it doesn't have the same problem; the reviewers will test against whichever sheet they hold.
 
-## Inputs — "ROI Calculator" sheet
+## Inputs ("ROI Calculator" sheet)
 
 | Cell | Input | Allowed values (data validation) | Sheet default |
 |---|---|---|---|
@@ -20,7 +20,7 @@ We implement what the formulas clearly intend: the lookup resolves against the p
 
 The validation only restricts what can be typed into the sheet; the formulas themselves accept any number, so `calculateRoi` does too (the UI enforces the ranges). Defaults are repeated as assumptions on the Logic sheet: N3 default annual volume 36,000, N4 default monthly salary 30,000.
 
-## Document type → tier — Logic!A1:C12
+## Document type → tier (Logic!A1:C12)
 
 | Document type | Tier | Allowed models |
 |---|---|---|
@@ -38,7 +38,7 @@ The validation only restricts what can be typed into the sheet; the formulas the
 
 Column C ("Allowed models") is informational; no formula reads it. Tier 3 + Multi is enforced by B10 instead.
 
-## Pricing — Logic!E1:K6
+## Pricing (Logic!E1:K6)
 
 Pages up to 36,000 are covered by the fixed annual cost. Each further page is charged at its band's rate (₹/page). Bands are **cumulative slabs**, like income-tax brackets, not a single rate for the whole volume.
 
@@ -52,7 +52,7 @@ Pages up to 36,000 are covered by the fixed annual cost. Each further page is ch
 
 There is no `tier3|multi` row. The lookup range is E2:K8 (rows 7–8 are empty).
 
-## Constants — Logic!M1:N6
+## Constants (Logic!M1:N6)
 
 | Assumption | Value | Where it's used |
 |---|---|---|

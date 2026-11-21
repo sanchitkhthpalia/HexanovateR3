@@ -137,8 +137,8 @@ export default function LeadForm() {
   }
 
   return (
-    // lg: exactly 412px, wider than the panel's 348px content box, so it overhangs the left panel by ~33px
-    // — the design's "folds" fill that overhang (Figma 3009:10095 sits at x=565 while the panel starts at 598).
+    // lg: exactly 412px, wider than the panel's 348px content box, so it overhangs the left panel by
+    // ~33px, as in Figma (3009:10095 sits at x=565, the panel starts at 598). The "folds" fill the overhang.
     <form
       onSubmit={(event) => handleSubmit(send)(event)}
       noValidate

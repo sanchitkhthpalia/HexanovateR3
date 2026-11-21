@@ -104,7 +104,7 @@ function update(sheet, body) {
   return json({ ok: true });
 }
 
-/** Row number of a lead (robust even if rows are sorted or inserted by hand), or 0. */
+/** Row number of a lead, or 0. Searching by ID still works if rows are sorted or added by hand. */
 function findLeadRow(sheet, id) {
   if (sheet.getLastRow() < 2) return 0;
   const match = sheet

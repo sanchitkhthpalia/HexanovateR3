@@ -1,5 +1,5 @@
 // Header navigation content. Only the Solutions mega menu is designed (Figma 3008:9974);
-// the other menus reuse link groups from the footer — see docs/assumptions.md H1.
+// the other menus reuse link groups from the footer (assumptions H1).
 // No page navigation is required by the brief, so every href is "#".
 
 export interface NavLink {

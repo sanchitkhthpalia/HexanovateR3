@@ -1,13 +1,11 @@
 import "server-only";
 
-// Fixed-window rate limit per key (client IP): at most LIMIT requests per WINDOW_MS.
+// Fixed-window rate limit per key (usually the client IP).
 //
-// LIMITATION — in-memory state on serverless: Vercel runs this route on however many function
-// instances it needs, each with its own memory, and instances are recycled. So the limit is
-// per-instance and resets on cold starts; a determined client spread across instances gets more
-// than LIMIT. It still stops naive floods and accidental double-submits, and the honeypot and the
-// minimum-fill-time check apply regardless. For a real deployment, back this with a shared store
-// (e.g. Upstash Redis via the Vercel Marketplace, `@upstash/ratelimit`) — same interface.
+// Limitation: this lives in memory. On Vercel each function instance has its own copy and loses it
+// on a cold start, so a client spread over several instances can go past the limit. It still stops
+// simple floods and double submits, and the honeypot and fill-time checks apply anyway. For real
+// traffic, back it with a shared store such as Upstash Redis (`@upstash/ratelimit`).
 
 const LIMIT = 5;
 const WINDOW_MS = 10 * 60 * 1000;

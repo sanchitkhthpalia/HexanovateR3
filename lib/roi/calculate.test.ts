@@ -4,7 +4,7 @@ import { calculateRoi, excelRound, excelRoundUp, type RoiInput, type RoiResult }
 
 /**
  * Expected values come from scripts/roi/generate_fixtures.py, which evaluates the
- * workbook's own cell formulas with an independent spreadsheet engine — never from
+ * workbook's own cell formulas with an independent spreadsheet engine, never from
  * calculateRoi itself. Comparisons are exact (toBe / toEqual), not approximate.
  */
 
@@ -64,7 +64,7 @@ function asSheetCells(result: RoiResult): SheetCase["expected"] {
 const run = (c: SheetCase) => asSheetCells(calculateRoi(c.input as RoiInput));
 const find = (name: string) => {
   const c = named.find((n) => n.name === name);
-  if (!c) throw new Error(`fixture missing: ${name} — regenerate with npm run roi:fixtures`);
+  if (!c) throw new Error(`fixture missing: ${name}; regenerate with npm run roi:fixtures`);
   return c;
 };
 

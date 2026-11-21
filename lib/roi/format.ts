@@ -1,13 +1,9 @@
-// Display formatting for the ROI calculator. No ROI maths here — values come from calculate.ts.
-//
-// What the design and sheet show, and so what we match:
-// - Currency: ₹ with Indian digit grouping (₹4,07,000). The design's cards show whole rupees ("₹0");
-//   the sheet formats money as ₹#,##0.00. So whole amounts show no decimals and amounts with paise
-//   show exactly 2 — the visible value always equals the sheet's.
-// - No L/Cr abbreviation and no percentages: neither appears in the design or in the sheet's
-//   output formats, and full figures can be compared with the sheet directly.
-// - Counts (pages, people) use Indian grouping; "Resources Needed" 2 dp and "Payback Months"
-//   1 dp mirror the sheet's 0.00 and 0.0 formats.
+// Display formatting for the ROI calculator (the maths is in calculate.ts).
+// - Money: ₹ with Indian grouping (₹4,07,000). Whole rupees show no decimals, like the design's
+//   "₹0"; amounts with paise show 2, like the sheet's ₹#,##0.00. Either way it equals the sheet.
+// - No L/Cr or percentages: neither the design nor the sheet uses them, and full figures are
+//   easy to compare with the sheet.
+// - Resources Needed has 2 decimals and Payback Months 1, matching the sheet's 0.00 and 0.0.
 
 import { excelRound } from "./calculate";
 

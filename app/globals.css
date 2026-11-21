@@ -3,18 +3,18 @@
 /*
  * Design tokens from Figma (file 2aNmc6dGcco0dIXbhVX4te, frame 3008:9178).
  * Names follow the Figma variables where they exist (Foundation/Blue, NuBlue,
- * Slate, Brand); the rest are measured from the section frames — see docs/design/SPEC.md.
+ * Slate, Brand); the rest are measured from the section frames (docs/design/SPEC.md).
  * The design is light-only, so there is no dark theme.
  */
 @theme {
-  /* Colour — Figma variables */
+  /* Colour: Figma variables */
   --color-brand-300: #64a1e9; /* Foundation/Blue/blue-300 */
   --color-brand-500: #1873de; /* Foundation/Blue/blue-500, NuBlue/700 */
   --color-brand-700: #11529e; /* CTA gradient end, secondary CTA text */
   --color-nublue-200: #dfeeff; /* NuBlue/200 */
   --color-nublue-800: #0053b5; /* NuBlue/800 */
   --color-accent-300: #fabf5a; /* Color/Brand/300 (Base) */
-  --color-accent-500: #d99723; /* Foundation/Yellow/yellow-500 — decorative uses (bars, dividers) */
+  --color-accent-500: #d99723; /* Foundation/Yellow/yellow-500, decorative only (bars, dividers) */
   /* Accent used as TEXT, darkened just enough for WCAG AA on the light-blue backgrounds (assumptions Q7).
      Set both back to #d99723 to restore the design's exact yellow. */
   --color-accent-text: #895f16; /* 13–16px text: 4.5:1 on the header pill */
@@ -23,7 +23,7 @@
   --color-slate-200: #e1e8ef; /* Color/Light/Slate/200 */
   --color-slate-900: #132333; /* Color/Light/Slate/900 */
 
-  /* Colour — measured from frames */
+  /* Colour: measured from frames */
   --color-page: #edf5ff; /* page background */
   --color-sky-50: #dfedff; /* lead card gradient start */
   --color-sky-100: #cce3ff; /* banner/footer gradient start, lead card gradient end */
@@ -38,7 +38,7 @@
   --color-ink-muted-strong: #525252; /* #626262 is 4.1–4.2:1 on the footer gradient; this is ≥5:1 */
   --color-ink-menu: #48586a;
   --color-g2: #fe492c;
-  /* ROI calculator — the Figma calculator is a raster, so these are sampled from it (Tailwind's slate scale + one blue) */
+  /* ROI calculator: the Figma calculator is a raster, so these are sampled from it (Tailwind's slate scale + one blue) */
   --color-roi-blue: #3e93fc;
   --color-roi-ink: #0f172a;
   --color-roi-muted: #64748b;
@@ -48,14 +48,14 @@
   --color-roi-surface: #f1f5f9;
   --color-roi-bg: #f8fafc;
   --color-roi-border: #e4eaf2;
-  --color-danger: #c42b1c; /* form errors — not in the design; 5.6:1 on white */
+  --color-danger: #c42b1c; /* form errors (not in the design), 5.6:1 on white */
   --color-success: #1e7d4f;
 
   /* Fonts (loaded with next/font in app/layout.tsx) */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-be-vietnam), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Type scale — size / line-height / tracking from Figma */
+  /* Type scale: size / line-height / tracking from Figma */
   --text-display-xl: 2.75rem; /* 44 banner title */
   --text-display-xl--line-height: 3.75rem; /* 60 */
   --text-display-lg: 2.4375rem; /* 39 lead headline */
@@ -90,7 +90,7 @@
 
   /* Weights used: Inter 300/400/500/600/700, Be Vietnam Pro 400/500/600 (Tailwind defaults cover the names) */
 
-  /* Spacing — Figma Spacing/1x = 4px matches Tailwind's base unit */
+  /* Spacing: Figma Spacing/1x = 4px, same as Tailwind's base unit */
   --spacing: 0.25rem;
   --container-content: 63rem; /* 1008px content column */
 
@@ -104,11 +104,11 @@
   --radius-pill: 2.5rem; /* 40 buttons, inputs in footer */
   --radius-footer: 2.5rem; /* 40 footer top corners */
 
-  /* Shadows — Figma "Shadow/overlay" */
+  /* Shadows: Figma "Shadow/overlay" */
   --shadow-overlay:
     0 0 0 1px #0b151f1a, 0 2px 4px #0b151f0a, 0 5px 8px #0b151f0a, 0 10px 18px #0b151f08, 0 24px 48px #0b151f08;
 
-  /* Breakpoints — the full desktop nav needs the 1134px header pill, so it appears at 1200px */
+  /* Breakpoints: the full desktop nav needs the 1134px header pill, so it starts at 1200px */
   --breakpoint-desk: 75rem;
 
   /* Motion */

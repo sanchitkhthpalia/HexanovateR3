@@ -1,4 +1,4 @@
-# Design spec — extracted from Figma
+# Design spec (extracted from Figma)
 
 Source: duplicate of the Hexanovate file, `figma.com/design/2aNmc6dGcco0dIXbhVX4te` (original `erQwodkBIEBdqAdyiq4Bpw`), page frame `3008:9178`.
 Extracted 2026-11-21 via Figma MCP. Screens in `screens/`, assets in `assets/`, layer tree in `structure.xml`.
@@ -81,12 +81,12 @@ Cards 20 · footer top 40 · ROI card 25 · inputs 8 · pills/buttons 40 · head
 
 ## Header (`3008:9194`)
 - Floating pill: 1134×56 (overhangs the 1008 column by 63px each side), padding 4, gap 62, radius 33, blurred translucent blue.
-- Logo slot: **white 142×48 r26 placeholder — no logo in file.** Use KlearStack monogram + wordmark (`assets/lead-form/klearstack-monogram.svg`).
+- Logo slot: **white 142×48 r26 placeholder, no logo in file.** Use KlearStack monogram + wordmark (`assets/lead-form/klearstack-monogram.svg`).
 - Nav: Product▾, **Solutions▾ (active)**, Industries▾, Pricing, Resources▾, Company▾. Gap 16; caret 14px, gap 4. Active caret rotated 180° and yellow.
 - Active indicator: `#1873DE` bar 76×6, top radii 28, sitting at the bottom edge of the pill under the active item.
 - CTAs (gap 12): **Try it for Free →** (white, 1px #1873DE, text #11529E 15px, arrow 20, px24 py12) and **Get Free Demo →** (brand gradient, white 16px, arrow 16, px24 py12).
 
-## Mega menu — Solutions (`3008:9974`)
+## Mega menu: Solutions (`3008:9974`)
 - Pointer triangle 24px above panel, aligned under the active nav item.
 - Two columns. Left "Sub nav list": slate-50 bg, slate-200 border, p24, gap 12, left radii 16. Items 200w, `pl4 pr16 py4`, gap 12, r16; white 36px icon box r8 with SealCheck 20px (24 when active); label Inter 500 15/24 slate-900.
   Active item: bg `#DFEEFF`, r12, label 600 `#0053B5`.
@@ -98,7 +98,7 @@ Cards 20 · footer top 40 · ROI card 25 · inputs 8 · pills/buttons 40 · head
 ## Integrations banner (`3008:9632`)
 1008×292, r20, 1px #1873DE border, px48 py44, banner gradient plus a decorative diagonal overlay. Title: "Already Using SAP, Tally or QuickBooks? " + yellow "We Integrates with All!" (copy as designed). Gap 40 to CTA **Get A Free Demo →** (h44, px32).
 
-## ROI calculator (`3008:9582`) — RASTER IN FIGMA
+## ROI calculator (`3008:9582`): raster in Figma
 The calculator is two **screenshots** (`assets/roi/*.png`, 1366×768 each), not layers, so there are no tokens; rebuild by measuring `screens/roi-calculator.png` (rendered at 1008 wide).
 - Outer card ~1008×598, r25, near-white (#F8FAFC-ish) with light border.
 - Title "Calculate Your Savings" (~26px bold, dark navy); subtitle "See how much time and money you can save with KlearStack AI." (~13px slate).
@@ -114,7 +114,7 @@ The calculator is two **screenshots** (`assets/roi/*.png`, 1366×768 each), not 
   "**99%\*** World Class Accuracy", "**Proprietary AI** for Ultimate Security", "**Pilot Ready** in Less than 7 Hours\*".
 - Logo strip: "Used by Many, Loved by All!" (15px, 106w) then logos, gap 40, h28 (Network International ~17px tall, Konica Minolta 46px): Landmark Group, Network International, Elevation 10K (×2), Konica Minolta. Right-edge fade. Becomes the infinite marquee.
 - Right: tagline "Bring your messiest documents. / We'll process them live." → form 412w:
-  fields gap 8 — **Name\***, **Contact no.\***, **Email ID\***, row (gap 8) **Solution Required\*▾** (flex) + **No. of Documents\*▾**, **Pain Point and Expectations (optional)** textarea h106 (py14).
+  fields gap 8: **Name\***, **Contact no.\***, **Email ID\***, row (gap 8) **Solution Required\*▾** (flex) + **No. of Documents\*▾**, **Pain Point and Expectations (optional)** textarea h106 (py14).
   Inputs: white, 1px #95BFF0, r8, px20 py12.
   Decorative "fold" tabs (`field-tab-vector.svg`, 33×21) peek out at the left edge of fields 2–5 (y 44.5/100.5/156.5/212.5/326.5).
 - Gap 16 → **Free Live Demo →** (209w, px32 py12, right-aligned).
@@ -123,7 +123,7 @@ The calculator is two **screenshots** (`assets/roi/*.png`, 1366×768 each), not 
 
 ## Footer (`3008:9718`)
 - Full-bleed 1200, top radii 40, footer gradient, `px96 py80`, glow ellipse top-right (`ellipse-glow.svg`).
-- Row 1 (space-between): left 464w — **logo placeholder white 259×48 r26 (no logo in file)**, gap 24, description (Inter 14/26 #626262), gap 14, socials (28px circles, gap 10: Instagram on #1873DE = hover/active state, Mail and WhatsApp on white). Right (gap 46): quick links (212w, right-aligned, gap 20, Inter 500 15 + 2×16 #D99723 bar): How it works?, Check All Document Types, Pricing, Integrations; then **Solutions** column.
+- Row 1 (space-between): left 464w: **logo placeholder white 259×48 r26 (no logo in file)**, gap 24, description (Inter 14/26 #626262), gap 14, socials (28px circles, gap 10: Instagram on #1873DE = hover/active state, Mail and WhatsApp on white). Right (gap 46): quick links (212w, right-aligned, gap 20, Inter 500 15 + 2×16 #D99723 bar): How it works?, Check All Document Types, Pricing, Integrations; then **Solutions** column.
 - Row 2 (space-between), columns right-aligned with title + 24×1 #D99723 divider (gap 16) + items gap 20:
   Industries (**BFSI active pill**: #1873DE, white 600, px16 py4 r20), Healthcare, Telecom, Manufacturing · Resources: Blog, Guides, Newsroom, API Documentation, Product Documentation · Tools: Compress PDF, Merge PDF, PDF to Image · Capabilities: Document Processing, Document Interpretation, Document Extraction, Straight Through Protocol (STP) · Company: About, Contact, Careers.
   Solutions: Accounts Payable, Supply Chain, Consumer Loans, ID Card.

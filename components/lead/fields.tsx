@@ -71,7 +71,7 @@ interface FormSelectProps {
   options: readonly SelectOption[];
   value: string | undefined;
   onValueChange: (value: string) => void;
-  /** Called when the list closes — the select's equivalent of blur, so validation doesn't fire on open. */
+  /** Called when the list closes. It's the select's blur, so validation doesn't fire on open. */
   onClose: () => void;
   invalid: boolean;
   errorId: string;

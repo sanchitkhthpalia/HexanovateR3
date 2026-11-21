@@ -9,7 +9,7 @@ import sharp from "sharp";
 const SRC = "docs/design/assets";
 const OUT = "public";
 
-// [source, destination] — SVGs kept byte-for-byte as exported.
+// [source, destination]. SVGs are kept byte-for-byte as exported.
 const svgs = [
   ["header/caret-down.svg", "icons/caret-down-nav.svg"],
   ["header/caret-down-active.svg", "icons/caret-down-nav-active.svg"],

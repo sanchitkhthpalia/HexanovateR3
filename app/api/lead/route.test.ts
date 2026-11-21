@@ -48,7 +48,7 @@ beforeEach(() => {
   sendLeadEmail.mockResolvedValue(undefined);
 });
 
-describe("POST /api/lead — happy path", () => {
+describe("POST /api/lead: happy path", () => {
   it("stores in the Sheet, then CRM + email in parallel, then writes statuses back", async () => {
     const res = await post(valid());
     expect(res.status).toBe(200);

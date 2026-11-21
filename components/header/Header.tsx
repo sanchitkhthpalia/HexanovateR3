@@ -9,7 +9,7 @@ import { preventNavigation } from "./nav-data";
 
 // Header & navigation, Figma 3008:9194. A floating translucent pill, 1134px wide on desktop
 // (it overhangs the 1008px column by 63px each side), sticky with the same offset it has in the
-// design (24px). It turns more opaque with a shadow once the page scrolls — docs/assumptions.md R4.
+// design (24px). It turns more opaque with a shadow once the page scrolls (assumptions R4).
 export default function Header() {
   const scrolled = useScrolled(8);
 

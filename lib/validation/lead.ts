@@ -1,4 +1,4 @@
-// Lead form validation — one schema used by the form (react-hook-form + zodResolver) and by
+// Lead form validation: one schema used by the form (react-hook-form + zodResolver) and by
 // /api/lead, so browser and server rules can't drift. Messages are written for the person filling
 // the form, not as "invalid input".
 import { getCountries, isValidPhoneNumber, type CountryCode } from "libphonenumber-js";
@@ -89,7 +89,7 @@ export const leadFormSchema = z.object({
 
 /** What the browser POSTs: the form fields plus spam signals. */
 export const leadSubmissionSchema = leadFormSchema.extend({
-  /** Honeypot — a hidden field people never see; bots fill it. Must be empty. */
+  /** Honeypot: a hidden field people never see but bots fill in. Must be empty. */
   website: z.string().max(200).optional().default(""),
   /** Epoch ms when the form was rendered; lets the server reject instant (bot) submissions. */
   renderedAt: z.number().int().positive(),

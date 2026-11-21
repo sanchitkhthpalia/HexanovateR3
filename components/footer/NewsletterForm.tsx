@@ -6,7 +6,7 @@ import { ctaClasses } from "@/components/ui/ButtonLink";
 import { ArrowRight } from "@/components/icons";
 
 // Newsletter row (Figma 3008:9871). Validates the address; not wired to a system (optional per
-// the brief) — a valid submit shows a confirmation. Any valid address is accepted here: the
+// the brief); a valid submit shows a confirmation. Any valid address is accepted here: the
 // work-email rule applies to demo requests, not to newsletter sign-ups.
 const emailSchema = z
   .string()

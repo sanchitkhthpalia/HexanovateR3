@@ -18,7 +18,7 @@ import { formatCount, formatInr, formatMonths, formatPages, formatResources } fr
 import ModelToggle from "./ModelToggle";
 import RangeSlider from "./RangeSlider";
 
-// ROI calculator (Figma 3008:9582 — a raster, rebuilt from measurements; docs/design/SPEC.md).
+// ROI calculator (Figma 3008:9582 is a raster, so it was rebuilt from measurements; docs/design/SPEC.md).
 // All maths is calculateRoi (lib/roi/calculate.ts, tested against the sheet); all number display is
 // lib/roi/format.ts. This component only holds the four inputs and lays out the results.
 // First load = the sheet's own default inputs (Bank Cheques, Single, 36,000 pages, ₹30,000).
@@ -125,7 +125,7 @@ export default function RoiCalculator() {
           </div>
         </div>
 
-        {/* Outputs — update live as inputs change */}
+        {/* Outputs update live as inputs change */}
         <div className="mt-6 grid gap-[15px] sm:mt-[26px] md:grid-cols-3">
           <ResultCard
             label="Net Monthly Savings"
@@ -204,7 +204,7 @@ function notReadyMessage(status: string, documentType: DocumentType) {
 
 // Labels: the design's #3E93FC is 3.1:1 at 11px, so the blue label uses brand-500 (4.6:1); the 26px
 // value keeps #3E93FC (large text needs 3:1). Captions use slate-500 instead of the design's
-// #94A3B8 (2.6:1) — assumptions Q7.
+// #94A3B8 (2.6:1), see assumptions Q7.
 const TONES = { blue: "text-brand-500", ink: "text-roi-ink", muted: "text-roi-muted" } as const;
 
 // Result card (ROI raster): 114px tall, centred label / value / caption. The first card's label and
