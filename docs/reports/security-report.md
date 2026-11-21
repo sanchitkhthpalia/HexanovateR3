@@ -53,6 +53,7 @@
 | Honeypot | A hidden `website` field. If filled: bland `200 {ok:true}`, nothing stored. | Route test |
 | Minimum fill time | Under 3s after render (or a timestamp in the future, or older than 24h) → 400 `too_fast`. | Route test |
 | Body size | Over 10 KB → 413. | Route test |
+| Booking endpoints | `/api/slots` and `/api/book` need a **2-hour HMAC-signed token** issued by `/api/lead`, plus the same Origin check and a per-IP rate limit. The booking's name and email come from the token, not the request body. The requested time must be an exact slot on the grid. | Route tests (forged, tampered and expired tokens → 401; foreign Origin → 403; off-grid time → 400; body email ignored) |
 
 **Known weaknesses (accepted):**
 - **The rate limit is in memory.** Vercel can run several function instances, each with its own counter, and counters reset on cold start. It slows a single client down but isn't a hard limit. This is documented in `lib/server/rate-limit.ts`.
@@ -64,7 +65,7 @@
 | Credential | Scope | If it leaked |
 |---|---|---|
 | `HUBSPOT_TOKEN` (service key) | `crm.objects.contacts.read` and `.write` only | Contacts in this one test portal could be read and edited. No deals, settings or users. Revoke by rotating in HubSpot. |
-| `SHEETS_WEBHOOK_SECRET` + URL | The web app accepts only `append` and `update` (the status columns of an existing lead). It can't read or delete. | Junk rows could be appended and status columns overwritten. Rotate by changing the script property and the Vercel variable. |
+| `SHEETS_WEBHOOK_SECRET` + URL | The web app accepts only `append`, `update` (status columns of an existing lead), `busy` and `book`. It can't read or delete rows. | Junk rows appended and status columns overwritten; **busy times** (start/end only, no titles) read from the owner's calendar; and **30-minute events created that invite any address**, sent from the owner's account (invite spam). The same key also signs booking tokens unless `BOOKING_TOKEN_SECRET` is set. Rotate by changing the script property and the Vercel variable. |
 | `GMAIL_APP_PASSWORD` | **Broad:** an app password gives SMTP/IMAP access to the whole Gmail account. | Mail could be sent from, and read in, that test account. It's a dedicated test account with nothing else in it. Revoke at myaccount.google.com/apppasswords. |
 
 Resend or SendGrid would give a send-only key, but they need a verified domain to deliver to ai-labs@hexanovate.com, and I don't have one. That's why Gmail SMTP was used.
@@ -115,6 +116,7 @@ found 0 vulnerabilities
   - Browser → `/api/lead` (Vercel function, HTTPS).
   - From there: Google Sheet (test Google account), HubSpot (test portal), and an email to ai-labs@hexanovate.com (from a test Gmail).
   - Nothing goes to analytics. There are no third-party scripts on the page.
+- **Booking:** if the lead books, a calendar event on the test Google account holds their name and email, the lead receives a Google invite, and the Sheet row records the meeting time.
 - **Who can read it:** the owner of the test Google and HubSpot accounts, plus the ai-labs mailbox.
 - **Logs:** Vercel logs contain only `[lead] <provider> failed: <code>`, with no name, email or phone. Checked in `settle()` in `route.ts`.
 - **Consent:**
@@ -125,6 +127,7 @@ found 0 vulnerabilities
 - The browser only receives `{ ok: false, error: "<code>" }`, with codes `forbidden`, `bad_request`, `too_large`, `rate_limited`, `too_fast`, `validation` and `unavailable`, plus friendly messages per field for validation.
 - A test makes all three providers throw errors containing tokens, URLs and SMTP text. It asserts the response is exactly `{ ok:false, error:"unavailable" }` and contains none of that text.
 - The Apps Script returns only error codes too, and logs details to its own execution log.
+- `/api/slots` and `/api/book` follow the same rule: `expired`, `invalid_slot`, `slot_taken`, `already_booked` or `unavailable`. A test makes the calendar throw an error containing the script URL and checks none of it reaches the response.
 - With no credentials configured, the real route returns 502 `unavailable`, and the logs show only `[lead] sheets: not configured`.
 
 ## The three fixes I'd make first

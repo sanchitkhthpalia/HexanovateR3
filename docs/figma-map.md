@@ -59,7 +59,5 @@ We haven't fetched these to save MCP quota. One `get_screenshot` each if we deci
 ## Extracted artefacts
 
 - `docs/design/SPEC.md`: tokens and per-section measurements
-- `docs/design/screens/*.png`: reference render of each section
-- `docs/design/assets/**`: raw assets downloaded from Figma
-- `docs/design/structure.xml`: layer tree of `3008:9178`
-- `docs/design/full-page.png`: whole frame at 1:1
+- Section renders, the full-page render, the layer tree and the raw Figma asset exports were kept locally under
+  `docs/design/` and are not published (third-party design material). The optimised assets the site uses are in `public/`.

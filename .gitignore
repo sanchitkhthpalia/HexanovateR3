@@ -38,3 +38,10 @@ docs/ROI Calculator_MarTech Technical_Round 2.xlsx
 
 # PDFs exported for the submission email (source is docs/reports/*.md)
 submission/
+
+# Raw Figma exports and reference renders (third-party design material; kept locally only).
+# The optimised copies the site uses are in public/ (built by scripts/assets/build-public-assets.mjs).
+docs/design/assets/
+docs/design/screens/
+docs/design/full-page.png
+docs/design/structure.xml

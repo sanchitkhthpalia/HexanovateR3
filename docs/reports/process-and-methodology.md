@@ -16,9 +16,11 @@ I built in the brief's priority order. Before writing any UI, I locked down the 
 | Footer and audit | Footer, then an audit at 10 widths: overflow, a11y (axe), contrast and loading. Fixed what it found. | `455b8e0` |
 | Integrations | `/api/lead`: Sheet, HubSpot and email, with partial-failure handling. | `30c8cb1` |
 | Hardening | Security headers, dependency audit, reports. Done after the build time box, within the 24h window. | `e530d76`+ |
+| Go-live | Connected the test accounts (Sheet, HubSpot, Gmail) and found a secret-mismatch bug on the live site (section 5). | `691137a` |
+| Calendar | Booking step after submit, through the same Apps Script. | `7970cf8` |
 
 ## 2. Stack and why
-- **Next.js 16 (App Router) + TypeScript on Vercel.** One codebase for the page and the server routes that hold secrets. The page is statically prerendered and served from the CDN; only `/api/lead` runs as a function.
+- **Next.js 16 (App Router) + TypeScript on Vercel.** One codebase for the page and the server routes that hold secrets. The page is statically prerendered and served from the CDN; only the API routes (`/api/lead`, `/api/slots`, `/api/book`) run as functions.
 - **Tailwind CSS 4.** Figma variables map one-to-one onto `@theme` tokens, so spacing, colours and type come from the file rather than being eyeballed.
 - **Radix primitives** (Navigation Menu, Dialog, Accordion, Select). They provide keyboard, focus and ARIA behaviour; all styling is mine.
 - **Animation:** CSS transitions and keyframes only, no animation library. That keeps the bundle small, and the marquee runs on the compositor.
@@ -34,6 +36,10 @@ Browser form ──POST /api/lead (same-origin, JSON)──▶ Vercel function (
       Email to ai-labs@ via Gmail SMTP (nodemailer) ┘ each settled independently
    3. Sheet row updated with crm_status / email_status / HubSpot ID
    → 200 if the lead landed in ANY system, else 502 "unavailable" (user can retry)
+     + a 2-hour signed booking token
+Success screen ──POST /api/slots {token}──▶ Apps Script "busy" (CalendarApp) → open 30-min slots
+Pick a time ────POST /api/book {token, start}──▶ Apps Script "book": re-check under lock → create event,
+                                                 invite the lead, write meeting time to the Sheet row
 ```
 - **Where it runs:** every third-party call happens in the Vercel function. Secrets are Vercel environment variables, read only by `lib/server/env.ts`, which is marked `server-only` so the build fails if client code imports it. Nothing secret reaches the browser bundle (I checked).
 - **Partial failure:**
@@ -41,7 +47,8 @@ Browser form ──POST /api/lead (same-origin, JSON)──▶ Vercel function (
   - **If the Sheet is down** but CRM or email works, the user still sees success.
   - **Only if everything fails** does the user see a clear "couldn't send, please try again" state, with their input kept and a Retry button.
   - **Errors stay server-side.** Provider errors are logged without personal data and never sent to the browser.
-- **Calendar:** not built (see section 8). The planned design is in section 8.
+- **Calendar:** the Apps Script already runs as the calendar's owner, so it books with Google's built-in CalendarApp. That meant no OAuth client, no refresh token to expire, and no new secret. Only someone holding a booking token (i.e. who just submitted) can see slots or book, and the name and email come from the token. The script re-checks the slot under its lock, so there's no double booking, and it allows one booking per lead. If the calendar is down, the lead is already stored: the step offers a retry, and the success message already says the team will reach out within a business day.
+- **Verified live (21 Nov):** a submission through the real form on the deployed site created the Sheet row (with statuses written back), the HubSpot contact and the calendar event with the lead invited. A second booking by the same lead was refused.
 
 ## 4. Build vs integrate
 I wrote the API route myself rather than using Zapier or Make. With four systems that's still manageable, and owning the route gave me:
@@ -49,19 +56,20 @@ I wrote the API route myself rather than using Zapier or Make. With four systems
 - spam guards that run before any system is touched
 - per-system failure handling, recorded on the lead's row
 
-I **integrated** rather than built wherever a business system already exists: HubSpot for the CRM, a Sheet through Apps Script (no Google service account needed), and Gmail SMTP. Gmail was used because Resend and SendGrid can't deliver to ai-labs@ without a verified domain, which I don't have.
+I **integrated** rather than built wherever a business system already exists: HubSpot for the CRM, a Sheet through Apps Script (no Google service account needed), Google Calendar through that same script, and Gmail SMTP. The slot picker is **built**, because the brief asks for a step consistent with the page; an embedded Cal.com widget would have looked foreign. Gmail was used because Resend and SendGrid can't deliver to ai-labs@ without a verified domain, which I don't have.
 
 ## 5. AI tools: what they did, what went wrong, how I caught it
 - **Claude Code** (Anthropic, Opus model, in the terminal) generated most of the code and docs from my prompts, section by section, following the brief's priority list. I set scope and priorities, made the design and integration decisions recorded in `docs/assumptions.md`, and reviewed and tested the output.
 - **Figma MCP** read node structure, variables and screenshots straight from the file.
 - **Python `formulas` engine** (not AI) evaluated the real workbook, so the ROI tests compare against the sheet itself, not against my or the AI's reading of it.
 
-Things the AI got wrong, and how they were caught (the full list of 26 is in `docs/process-log.md`):
+Things the AI got wrong, and how they were caught (more in `docs/process-log.md`):
 1. **Money rounding.** The first formatter used `Math.round(x*100)`, so ₹1.005 displayed as ₹1.00 (binary floating point). It was caught by a format test run against **all 1,208 sheet-evaluated cases**, and fixed by reusing the engine's decimal-safe `excelRound`.
 2. **Form validation mode.** The AI used `reValidateMode: "onChange"`, assuming errors clear while you type. In react-hook-form that only applies after the first submit, so fixed fields kept stale errors and Submit stayed disabled. A browser test ("error clears as the user fixes it") failed; switched to `mode: "onTouched"`.
 3. **Tailwind 4 transitions.** Hover animations listed `transform`, but Tailwind 4 animates the separate `translate`/`scale` properties, so the CTA lift snapped instead of animating. A computed-style check caught it.
 4. **The workbook itself was broken.** Its formulas reference a tab name that doesn't exist (`'Logic & Pricing'` vs `Logic and Pricing`), so cached values show ₹0. I caught this by reading formulas rather than values, and test values come from evaluating a copy with the tab renamed.
-5. **CSP violation.** Adding a CSP surfaced a blocked `eval` from zod's JIT probe. A browser check listening for `securitypolicyviolation` events caught it; fixed with zod's `jitless` mode.
+5. **A setup instruction broke the live Sheet.** The suggested `openssl rand -hex 32 | pbcopy` copies a trailing newline. Our server trims secrets but the Apps Script didn't, so every write was rejected. The site correctly showed its retryable error, and the Vercel log said `sheets failed: sheets_unauthorized`. Fixed by trimming on both sides and making the script report "secret not set" separately from "wrong secret".
+6. **CSP violation.** Adding a CSP surfaced a blocked `eval` from zod's JIT probe. A browser check listening for `securitypolicyviolation` events caught it; fixed with zod's `jitless` mode.
 
 What I took from this: a check that fails isn't always the code. Twice it was my own test script, so I verified behaviour by hand before "fixing" anything.
 
@@ -91,14 +99,14 @@ The 15% annual-plan discount isn't applied, matching the sheet. **Not yet done:*
 ## 8. What is incomplete, why, and how I'd finish it
 | Item | Status | How I'd finish |
 |---|---|---|
-| **Calendar booking** (P2) | **Not built.** I prioritised P0 and P1 plus email. | Google Calendar API with an OAuth refresh token for a test account. Add `/api/slots`: free/busy query, 30-minute slots, Mon–Fri 10:00–18:00 IST, next 10 business days. Add `/api/book`: create the event and invite the lead, requiring a short-lived signed token returned by `/api/lead`, so only real leads can book. Show a slot picker in the form's success state. About 2–3 hours. |
-| **Live integrations** | Code is complete and tested with mocked providers. **The live test accounts must be connected in Vercel** before submissions reach HubSpot, the Sheet and the inbox. Until then, the form shows its error state. | Follow `docs/integrations-setup.md`, then submit one test lead and check all three systems. |
+| **Calendar built after the first submission** | The booking step and the live account connections were finished after my first submission email, within the 24-hour window; the commit history shows when. | Done. |
+| **No video link on bookings** | CalendarApp can't attach a Google Meet link, so the invite is a plain 30-minute event and the UI says "a 30-minute call". | Use the Advanced Calendar service (`conferenceData`) or the Calendar API. |
 | **ROI vs the live Google Sheet** | Verified against the xlsx (1,208 cases), not the online sheet. | Enter three combinations in the live sheet and attach screenshots. |
 | **ROI calculator fidelity** | The Figma calculator is a flat image, so it was rebuilt by measuring it. Close, but not token-exact. | Ask the designer for the layered frame. |
 | **Rate limiting** | In-memory per function instance (documented). | Upstash Redis or a Vercel WAF rule. |
 
 ## 9. With two more days
-1. Build the calendar booking and run a full end-to-end test on the live accounts, with screenshots of each system.
+1. Booking polish: Meet links, reschedule/cancel links in the invite, and showing times in the visitor's own time zone alongside IST.
 2. A shared rate limiter and a server-signed form token; move email to a provider with a verified domain and a send-only key.
 3. Playwright tests in CI against every Vercel preview: visual regression against the Figma renders, plus the existing behaviour checks.
 4. Analytics and consent: UTM capture into the Sheet and CRM, a real privacy page, and a retention policy for lead data.

@@ -1,5 +1,6 @@
 // Copies Figma SVGs and converts Figma rasters into right-sized WebP under public/.
-// Sources are the files downloaded from Figma into docs/design/assets (see docs/figma-map.md).
+// Sources are the files downloaded from Figma into docs/design/assets (see docs/figma-map.md). That folder is
+// kept locally and not published; its output in public/ is committed.
 // Run: node scripts/assets/build-public-assets.mjs
 import { copyFile, mkdir } from "node:fs/promises";
 import path from "node:path";

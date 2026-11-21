@@ -1,5 +1,7 @@
 # Implementation plan
 
+> Written before the build. Where the build differs (calendar booking went through the Apps Script web app instead of the Calendar API with an OAuth token; HubSpot uses a service key), `assumptions.md` and `reports/process-and-methodology.md` describe what shipped.
+
 Single marketing page for KlearStack, built from the Figma design, on Next.js + Vercel. Companion docs: `figma-map.md` (where the design lives), `design/SPEC.md` (tokens and measurements), `assumptions.md` (decisions), `roi-logic.md` (calculator).
 
 ## Build order (brief §6: P0 → P3, stop where the clock stops)

@@ -82,7 +82,19 @@ Gmail limits: about 500 messages a day, which is plenty here. Revoking the app p
 
 ---
 
-## 4. Verify end to end
+## 4. Calendar booking (same Apps Script, no new secret)
+
+The booking step uses the Apps Script from step 1, which books on **its owner's default Google Calendar**.
+
+1. Make sure the editor has the current `integrations/apps-script/Code.gs` (it has the `busy` and `book` actions).
+2. Run **setupSheet** once from the editor and allow the new **Calendar** permission. The log shows `Calendar: <name>`, and the Leads tab gains **Meeting (IST)** and **Calendar event ID** columns.
+3. **Deploy → Manage deployments → ✏️ → Version: New version → Deploy.** The URL stays the same, so nothing changes in Vercel.
+
+Optional: `BOOKING_TOKEN_SECRET` sets a separate key for booking tokens. Without it, the key is derived from `SHEETS_WEBHOOK_SECRET`.
+
+---
+
+## 5. Verify end to end
 
 1. Redeploy on Vercel after setting the variables.
 2. Submit the live form with a non-free email (any company domain; it doesn't need to exist for the sheet or CRM).
@@ -90,4 +102,5 @@ Gmail limits: about 500 messages a day, which is plenty here. Revoking the app p
    - **Sheet:** a new row, with `crm_status = ok`, `email_status = ok` and a HubSpot contact ID.
    - **HubSpot → Contacts:** the contact, with the `message` filled in.
    - **Inbox:** the notification.
+   - **Calendar:** after picking a time in the form's success step, a "KlearStack demo – <name>" event, and the row's **Meeting (IST)** filled in.
 4. If a status says `failed`: Vercel → Project → **Logs**, filter `[lead]`. The log names the provider and HTTP status, with no personal data.
