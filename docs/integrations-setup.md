@@ -13,7 +13,7 @@ Put the values in `.env.local` for local runs, and in **Vercel → Project → S
 1. Sign in to your **test** Google account and create a new Google Sheet, e.g. "KlearStack Leads".
 2. In the sheet: **Extensions → Apps Script**.
 3. Delete the sample code and paste all of `integrations/apps-script/Code.gs`. Save (⌘S).
-4. Generate a secret in a terminal: `openssl rand -hex 32`. Copy the output.
+4. Generate a secret in a terminal: `openssl rand -hex 32 | tr -d "\n" | pbcopy` (copies it without a trailing line break).
 5. In the Apps Script editor: **Project Settings** (gear icon) → **Script properties** → **Add script property**:
    - Property: `SHARED_SECRET`
    - Value: the secret from step 4

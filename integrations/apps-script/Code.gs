@@ -40,8 +40,10 @@ function doPost(e) {
     return json({ ok: false, error: 'bad_json' });
   }
 
-  const secret = PropertiesService.getScriptProperties().getProperty('SHARED_SECRET');
-  if (!secret || body.secret !== secret) return json({ ok: false, error: 'unauthorized' });
+  // Trimmed on both sides: a secret copied from a terminal often carries a trailing newline.
+  const secret = String(PropertiesService.getScriptProperties().getProperty('SHARED_SECRET') || '').trim();
+  if (!secret) return json({ ok: false, error: 'secret_not_set' });
+  if (String(body.secret || '').trim() !== secret) return json({ ok: false, error: 'unauthorized' });
 
   // Serialise writes so concurrent submissions can't interleave rows.
   const lock = LockService.getScriptLock();
