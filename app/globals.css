@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens from Figma (file 2aNmc6dGcco0dIXbhVX4te, frame 3008:9178).
+ * Names follow the Figma variables where they exist (Foundation/Blue, NuBlue,
+ * Slate, Brand); the rest are measured from the section frames — see docs/design/SPEC.md.
+ * The design is light-only, so there is no dark theme.
+ */
+@theme {
+  /* Colour — Figma variables */
+  --color-brand-300: #64a1e9; /* Foundation/Blue/blue-300 */
+  --color-brand-500: #1873de; /* Foundation/Blue/blue-500, NuBlue/700 */
+  --color-brand-700: #11529e; /* CTA gradient end, secondary CTA text */
+  --color-nublue-200: #dfeeff; /* NuBlue/200 */
+  --color-nublue-800: #0053b5; /* NuBlue/800 */
+  --color-accent-300: #fabf5a; /* Color/Brand/300 (Base) */
+  --color-accent-500: #d99723; /* Foundation/Yellow/yellow-500 */
+  --color-slate-50: #f8fafc; /* Color/Light/Slate/50 */
+  --color-slate-200: #e1e8ef; /* Color/Light/Slate/200 */
+  --color-slate-900: #132333; /* Color/Light/Slate/900 */
+
+  /* Colour — measured from frames */
+  --color-page: #edf5ff; /* page background */
+  --color-sky-50: #dfedff; /* lead card gradient start */
+  --color-sky-100: #cce3ff; /* banner/footer gradient start, lead card gradient end */
+  --color-sky-300: #a2cdff; /* banner/footer gradient end */
+  --color-wordmark-end: #3994ff;
+  --color-panel: #f4f9ff; /* lead form right panel */
+  --color-panel-border: #cde3ff;
+  --color-field-border: #95bff0;
+  --color-ink-body: #374151;
+  --color-ink-strong: #252525;
+  --color-ink-muted: #626262;
+  --color-ink-menu: #48586a;
+  --color-g2: #fe492c;
+
+  /* Fonts (loaded with next/font in app/layout.tsx) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-be-vietnam), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+
+  /* Type scale — size / line-height / tracking from Figma */
+  --text-display-xl: 2.75rem; /* 44 banner title */
+  --text-display-xl--line-height: 3.75rem; /* 60 */
+  --text-display-lg: 2.4375rem; /* 39 lead headline */
+  --text-display-lg--line-height: 3.375rem; /* 54 */
+  --text-display-lg--letter-spacing: -0.01em;
+  --text-title: 1.375rem; /* 22 newsletter */
+  --text-title--line-height: 2.25rem;
+  --text-title--letter-spacing: -0.011em;
+  --text-tagline: 1.0625rem; /* 17 */
+  --text-tagline--line-height: 1.5625rem;
+  --text-tagline--letter-spacing: -0.01em;
+  --text-body: 1rem; /* 16 */
+  --text-body--line-height: 1.608;
+  --text-button: 1rem; /* 16 CTA */
+  --text-button--line-height: 1.5rem;
+  --text-button--letter-spacing: -0.011em;
+  --text-trust: 0.9375rem; /* 15 */
+  --text-trust--line-height: 1.618;
+  --text-link: 0.9375rem; /* 15 footer links, menu labels */
+  --text-link--line-height: 1.4375rem;
+  --text-field: 0.875rem; /* 14 inputs */
+  --text-field--line-height: 1.5rem;
+  --text-field--letter-spacing: -0.011em;
+  --text-menu: 0.875rem; /* 14 mega menu secondary */
+  --text-menu--line-height: 1.375rem;
+  --text-legal: 0.875rem; /* 14/Regular */
+  --text-legal--line-height: 1.25rem;
+  --text-nav: 0.8125rem; /* 13 */
+  --text-nav--line-height: 1.25rem;
+  --text-note: 0.8125rem; /* 13 */
+  --text-note--line-height: 1.488;
+
+  /* Weights used: Inter 300/400/500/600/700, Be Vietnam Pro 400/500/600 (Tailwind defaults cover the names) */
+
+  /* Spacing — Figma Spacing/1x = 4px matches Tailwind's base unit */
+  --spacing: 0.25rem;
+  --container-content: 63rem; /* 1008px content column */
+
+  /* Radii */
+  --radius-field: 0.5rem; /* 8 inputs, icon boxes */
+  --radius-menu-item: 0.75rem; /* 12 */
+  --radius-menu: 1rem; /* 16 mega menu */
+  --radius-card: 1.25rem; /* 20 banner, lead card */
+  --radius-roi: 1.5625rem; /* 25 ROI card */
+  --radius-nav: 2.0625rem; /* 33 header pill */
+  --radius-pill: 2.5rem; /* 40 buttons, inputs in footer */
+  --radius-footer: 2.5rem; /* 40 footer top corners */
+
+  /* Shadows — Figma "Shadow/overlay" */
+  --shadow-overlay:
+    0 0 0 1px #0b151f1a, 0 2px 4px #0b151f0a, 0 5px 8px #0b151f0a, 0 10px 18px #0b151f08, 0 24px 48px #0b151f08;
+
+  /* Motion */
+  --animate-marquee: marquee var(--marquee-duration, 30s) linear infinite;
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+}
+
+/* Gradients from Figma, as utilities */
+@utility bg-cta {
+  background-image: linear-gradient(262deg, var(--color-brand-500) 0.2%, var(--color-brand-700) 99.8%);
+}
+@utility bg-lead-card {
+  background-image: linear-gradient(-45.2deg, var(--color-sky-50) 0.33%, var(--color-sky-100) 99.67%);
+}
+@utility bg-banner {
+  background-image: linear-gradient(to right, var(--color-sky-100), var(--color-sky-300));
+}
+@utility bg-footer {
+  background-image: linear-gradient(to bottom, var(--color-sky-100), var(--color-sky-300));
+}
+@utility bg-nav-pill {
+  background-color: rgb(24 115 222 / 0.1);
+  backdrop-filter: blur(25px);
+}
+@utility text-wordmark {
+  background-image: linear-gradient(to right, var(--color-nublue-800), var(--color-wordmark-end));
+  background-clip: text;
+  color: transparent;
+}
+
+/* 1008px column with a 16px gutter on small screens */
+@utility container-content {
+  margin-inline: auto;
+  width: min(100% - 2rem, var(--container-content));
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* clear the sticky header when jumping to sections */
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: #000;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand-500);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
